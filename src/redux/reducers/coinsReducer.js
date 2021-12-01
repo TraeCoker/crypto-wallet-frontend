@@ -1,6 +1,6 @@
 import { SET_COINS } from "../actions/constants";
 
-export default function marketReducer(state = [], action){
+export default function coinsReducer(state = [], action){
     switch(action.type){
         case SET_COINS:
             return state;
