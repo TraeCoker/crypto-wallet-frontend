@@ -1,1 +1,1 @@
-export const SET_TICKER_PRICES = "SET_TICKER_PRICES"
+export const SET_COINS = "SET_COINS"

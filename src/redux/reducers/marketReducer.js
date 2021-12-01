@@ -1,8 +1,8 @@
-import { SET_TICKER_PRICES } from "../actions/constants";
+import { SET_COINS } from "../actions/constants";
 
 export default function marketReducer(state = [], action){
     switch(action.type){
-        case SET_TICKER_PRICES:
+        case SET_COINS:
             return state;
         default:
             return state;
