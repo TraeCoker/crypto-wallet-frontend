@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './App.css';
 import Login from './components/authorization/Login';
 import Signup from './components/authorization/Signup';
-import MarketContainer from './market/MarketContainer';
+import MarketContainer from './components/market/MarketContainer';
 
 function App() {
   return (

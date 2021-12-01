@@ -1,3 +1,3 @@
-function userReducer(state = [], action){
+export default function userReducer(state = [], action){
     return state;
 }

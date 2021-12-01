@@ -4,6 +4,7 @@ import './auth.css';
 export default function Signup() {
   return(
     <div className="login-wrapper">
+    <h1>Welcome! Create a new user!</h1>
       <form>
       <label>
             <p>Name</p>
