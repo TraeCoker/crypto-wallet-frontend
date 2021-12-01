@@ -14,6 +14,9 @@ export default function MarketContainer() {
         <div>
         {console.log(coins)}
             <h1>Market</h1>
+            <ol>
+                {coins.map(c => <li key={c.id}><img src={c.image}/>{c.name} - ${c.current_price}</li>)}
+            </ol>
         </div>
     );
 }
