@@ -35,7 +35,10 @@ export function loginUser(user){
         body: JSON.stringify(user),
         })
         .then(r => r.json())
-        .then(data => console.log(data)
+        .then(data => {
+        setToken(data.jwt)
+        dispatch({type: SET_USER, payload: data.user})
+        }
     );
     }
 }
