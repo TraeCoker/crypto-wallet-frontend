@@ -1,10 +1,17 @@
 import { useState }from 'react';
 import './auth.css';
+import { useDispatch } from 'react-redux';
 
 export default function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
+  function handleSubmit(e){
+    e.preventDefault();
+    
+  }
 
   return(
     <div className="login-wrapper">
