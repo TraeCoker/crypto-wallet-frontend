@@ -1,10 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div>
-    
+      <h1>BOOM</h1>
     </div>
   );
 }
