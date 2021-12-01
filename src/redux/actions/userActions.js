@@ -23,3 +23,20 @@ export function createUser(user){
     );
     }
 }
+
+export function loginUser(user){
+    return dispatch => {
+        fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        },
+        body: JSON.stringify(user),
+        })
+        .then(r => r.json())
+        .then(data => console.log(data)
+    );
+    }
+}
+
