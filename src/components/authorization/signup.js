@@ -1,10 +1,14 @@
 import React from 'react';
 import './auth.css';
 
-export default function Login() {
+export default function Signup() {
   return(
     <div className="login-wrapper">
       <form>
+      <label>
+            <p>Name</p>
+            <input type="text" />
+        </label>
         <label>
             <p>Email</p>
             <input type="text" />
