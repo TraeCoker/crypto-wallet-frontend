@@ -1,0 +1,1 @@
+export const SET_TICKER_PRICES = "SET_TICKER_PRICES"
