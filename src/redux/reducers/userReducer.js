@@ -1,4 +1,4 @@
-import { SIGNUP_USER } from "../actions/constants";
+import { SET_USER } from "../actions/constants";
 
 export default function userReducer(state = [], action){
     switch (action.type){
