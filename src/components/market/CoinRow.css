@@ -25,3 +25,43 @@
     width: 150px;
 }
 
+.coin img {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+}
+
+.coin-symbol {
+    text-transform: uppercase;
+}
+
+.coin-data {
+    display: flex;
+    text-align: right;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.coin-price {
+    width: 110px;
+}
+
+.coin-volume {
+    width: 155px;
+}
+
+.coin-market-cap {
+    width: 230px;
+}
+
+.coin-price-change {
+    width: 100px;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
