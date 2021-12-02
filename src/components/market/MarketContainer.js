@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCoins } from '../../redux/actions/marketActions';
 import { CoinRow } from './CoinRow';
-import Line from '../charts/DemoChart.tsx';
 import './MarketContainer.css'
 
 export default function MarketContainer() {
@@ -16,7 +15,6 @@ export default function MarketContainer() {
     return (
         <div className="market-container">
             <h1>Market</h1>
-            <Line />
                 {coins.map(c => { 
                     return <CoinRow 
                             key={c.id} 
