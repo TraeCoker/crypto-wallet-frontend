@@ -15,6 +15,7 @@ export default function MarketContainer() {
     return (
         <div className="market-container">
             <h1>Market</h1>
+            
                 {coins.map(c => { 
                     return <CoinRow 
                             key={c.id} 
