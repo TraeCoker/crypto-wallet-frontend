@@ -14,7 +14,6 @@ export default function MarketContainer() {
     return (
         <div>
             <h1>Market</h1>
-            <ol>
                 {coins.map(c => { 
                     return <CoinRow 
                             key={c.id} 
@@ -22,12 +21,12 @@ export default function MarketContainer() {
                             symbol={c.symbol}
                             price={c.current_price}
                             image={c.image}
+                            volume={c.total_volume}
                             marketcap={c.market_cap}
                             priceChange={c.price_change_percentage_24h}
                         /> 
                     }
                 )}
-            </ol>
         </div>
     );
 }
