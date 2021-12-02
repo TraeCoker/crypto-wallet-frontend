@@ -9,11 +9,11 @@ export const CoinRow = ({name, price, symbol, rank, image, volume, marketcap, pr
                 <img src={image} alt={name + " image"} />
                 <h1>{name}</h1>
                 <p className="coin-symbol">{symbol}</p>
-                <p className="coin-rank">{rank}</p>
+                <p className="coin-rank"># {rank}</p>
             </div>
             <div className="coin-metrics">
                 <p className="coin-price">${price}</p>
-                <p className="coin-volume">${volume.toLocaleString()}</p>
+                <p className="coin-volume">Vol: ${volume.toLocaleString()}</p>
 
                 {priceChange < 0 ? (
                     <p className="coin-price-change red">{priceChange.toFixed(2)}%</p>
@@ -21,7 +21,7 @@ export const CoinRow = ({name, price, symbol, rank, image, volume, marketcap, pr
                     <p className="coin-price-change green">{priceChange.toFixed(2)}%</p>
                 )}
 
-                <p className="coin-market-cap">Market Cap: ${marketcap.toLocaleString()}</p>
+                <p className="coin-market-cap">Mkt Cap: ${marketcap.toLocaleString()}</p>
             </div>
           </div>
         </div>
