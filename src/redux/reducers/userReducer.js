@@ -7,8 +7,9 @@ export default function userReducer(state = {
 
     switch (action.type){
         case SET_USER:
+            console.log(action.payload)
         
-           return {isLoggedIn: true, currentUser: action.payload.user}
+           return {isLoggedIn: true, currentUser: action.payload}
 
         default:
             return state;
