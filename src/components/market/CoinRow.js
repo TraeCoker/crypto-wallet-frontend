@@ -1,4 +1,5 @@
 import React from 'react'
+import './CoinRow.css'
 
 export const CoinRow = ({name, price, symbol, image, volume, marketcap, priceChange}) => {
     return (
