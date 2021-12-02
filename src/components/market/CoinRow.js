@@ -1,7 +1,7 @@
 import React from 'react'
 import './CoinRow.css'
 
-export const CoinRow = ({name, price, symbol, image, volume, marketcap, priceChange}) => {
+export const CoinRow = ({name, price, symbol, rank, image, volume, marketcap, priceChange}) => {
     return (
         <div className="coin-container">
           <div className="coin-row">
@@ -9,6 +9,7 @@ export const CoinRow = ({name, price, symbol, image, volume, marketcap, priceCha
                 <img src={image} alt={name + " image"} />
                 <h1>{name}</h1>
                 <p className="coin-symbol">{symbol}</p>
+                <p className="coin-rank">{rank}</p>
             </div>
             <div className="coin-metrics">
                 <p className="coin-price">${price}</p>

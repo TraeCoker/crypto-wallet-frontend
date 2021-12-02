@@ -35,6 +35,11 @@
     text-transform: uppercase;
 }
 
+.coin-rank {
+    width: 100px;
+    text-align: right;
+}
+
 .coin-metrics {
     display: flex;
     text-align: right;

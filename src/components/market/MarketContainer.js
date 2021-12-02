@@ -20,6 +20,7 @@ export default function MarketContainer() {
                             key={c.id} 
                             name={c.name}
                             symbol={c.symbol}
+                            rank={c.market_cap_rank}
                             price={c.current_price}
                             image={c.image}
                             volume={c.total_volume}
