@@ -1,10 +1,15 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { fetchChartData } from '../../redux/actions/chartActions';
 import './CoinRow.css'
 
-export default function CoinRow({name, price, symbol, rank, image, volume, marketcap, priceChange}) {
+export const CoinRow = ({name, price, symbol, rank, image, volume, marketcap, priceChange}) => {
+    const dispatch = useDispatch();
+    const handleClick = () => dispatch(fetchChartData());
+
     return (
         <div className="coin-container">
-          <div className="coin-row">
+          <div className="coin-row" onClick={() => dispatch(fetchChartData())}>
             <div className="coin">
                 <img src={image} alt={name + " image"} />
                 <h1>{name}</h1>
