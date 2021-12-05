@@ -1,11 +1,10 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { fetchChartData } from '../../redux/actions/chartActions';
 import './CoinRow.css'
 
 export const CoinRow = ({name, price, symbol, rank, image, volume, marketcap, priceChange}) => {
     const dispatch = useDispatch();
-    const handleClick = () => dispatch(fetchChartData());
 
     return (
         <div className="coin-container">
@@ -25,7 +24,7 @@ export const CoinRow = ({name, price, symbol, rank, image, volume, marketcap, pr
                 ) : (
                     <p className="coin-price-change green">{priceChange.toFixed(2)}%</p>
                 )}
-
+            
                 <p className="coin-market-cap">Mkt Cap: ${marketcap.toLocaleString()}</p>
             </div>
           </div>

@@ -2,13 +2,12 @@ import { SET_CHART } from "../actions/constants";
 
 export default function chartReducer(state = {
     displayChart: false,
-    chartData: {}
+    chartData: []
 }, action ){
 
     switch(action.type){
         case SET_CHART:
-            console.log(action.payload)
-            return state;
+            return {displayChart: true, chartData: action.payload}
         default:
             return state;
     }
