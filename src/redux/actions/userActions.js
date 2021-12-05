@@ -1,5 +1,5 @@
 import { SET_USER } from "./constants";
-import { useSelector } from "react-redux";
+
 
 const setToken = token => {
     localStorage.setItem("jwt", token);
@@ -45,10 +45,18 @@ export function loginUser(user){
     }
 }
 
-export function renderCurrentPrices() {
-    const coins = useSelector(state => state.coins)
+export function renderCurrentPrices(coins) {
     const bitcoin = coins.find(c => c.id === "bitcoin").current_price
-    return {
-        bitcoin
-    }
+    const ethereum = coins.find(c => c.id === "ethereum").current_price
+    const tether = coins.find(c => c.id === "tether").current_price
+    const cardano = coins.find(c => c.id === "cardano").current_price
+    const solana = coins.find(c => c.id === "solana").current_price
+
+    return ({
+        bitcoin,
+        ethereum,
+        tether,
+        cardano,
+        solana,
+    })
 }

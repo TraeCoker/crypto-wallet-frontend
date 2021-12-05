@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchCoins } from '../../redux/actions/marketActions';
+import { fetchCoins } from './redux/actions/marketActions';
 import './App.css'
 import Login from './components/authorization/Login';
 import Signup from './components/authorization/Signup';
