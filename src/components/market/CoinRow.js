@@ -1,7 +1,7 @@
 import React from 'react'
 import './CoinRow.css'
 
-export const CoinRow = ({name, price, symbol, rank, image, volume, marketcap, priceChange}) => {
+export default function CoinRow({name, price, symbol, rank, image, volume, marketcap, priceChange}) {
     return (
         <div className="coin-container">
           <div className="coin-row">
