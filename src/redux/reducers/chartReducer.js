@@ -1,13 +1,15 @@
-import { SET_CHART } from "../actions/constants";
+import { SET_CHART, SET_WALLET_CHART } from "../actions/constants";
 
 export default function chartReducer(state = {
-    displayChart: false,
+    marketDisplay: false,
     chartData: []
 }, action ){
 
     switch(action.type){
         case SET_CHART:
-            return {displayChart: true, chartData: action.payload}
+            return {marketDisplay: true, chartData: action.payload}
+        case SET_WALLET_CHART:
+            return {marketDisplay: false, chartData: action.payload}
         default:
             return state;
     }
