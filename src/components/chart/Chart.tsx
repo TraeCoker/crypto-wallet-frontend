@@ -46,9 +46,10 @@ export const options = {
             autoSkip: true,
             maxTicksLimit: 7
         }
-    }
+    },
+  },
+
 }
-};
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
