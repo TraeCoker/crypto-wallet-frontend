@@ -10,9 +10,10 @@ export function fetchChartData(){
 
 export function fetchDataForSnapshots(coin, start, end){
     return dispatch => {
-        fetch(`https://api.coingecko.com/api/v3/coins/ethereum/market_chart/range?vs_currency=usd&from=1636162355&to=1638754355`)
+        console.log(`https://api.coingecko.com/api/v3/coins/${coin}/market_chart/range?vs_currency=usd&from=${start}&to=${end}`)
+        fetch(`https://api.coingecko.com/api/v3/coins/${coin}/market_chart/range?vs_currency=usd&from=${start}&to=${end}`)
         .then(resp => resp.json())
-        .then(data => dispatch({type: SET_WALLET_CHART, payload: renderMarketData(data.prices)}))
+        .then(data => console.log(data.prices))
     }
 }
 export const datesAreSame = (first, second) => {
@@ -28,8 +29,10 @@ export function updateWalletSnapshots(snapshots){
     let lastSnapshot = new Date(snapshots[0].unix)
     let today = new Date()
 
-    if (!datesAreSame(lastSnapshot, today)){
-        
+    if (datesAreSame(lastSnapshot, today)){
+        let start = snapshots[0].unix / 1000;
+        let end = today.getTime() / 1000;
+        dispatch(fetchDataForSnapshots("ethereum", start, end))
 
     }
 
