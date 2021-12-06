@@ -32,14 +32,14 @@ export const options = {
       display: true,
       text: 'Chart.js Line Chart',
     },
-    xAxes: [{
-        type: 'time',
-        ticks: {
-            autoSkip: true,
-            maxTicksLimit: 20
-        }
-    }]
   },
+  scales: {
+      x: {
+    ticks: {
+        autoSkip: true,
+        maxTicksLimit: 7
+    }
+}}
 };
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
