@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Navigate } from 'react-router';
-import { fetchDataForWalletChart } from '../../redux/actions/chartActions';
+import { updateWalletSnapshots } from '../../redux/actions/chartActions';
 import { Chart } from '../chart/Chart.tsx';
 
 export default function WalletContainer() {
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);
     const wallet = useSelector(state => state.user.currentUser.wallet);
+    const snapshots = useSelector(state => state.user.currentUser.snapshots);
     const dispatch = useDispatch();
     
-    //useEffect(() => {
-    //    dispatch(fetchDataForWalletChart());
-    //}, [])
+    useEffect(() => {
+        dispatch(updateWalletSnapshots(snapshots));
+    }, [])
 
     if (!isLoggedIn) {
         return <Navigate from="/wallet" to="/login" />

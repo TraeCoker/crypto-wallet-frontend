@@ -8,11 +8,25 @@ export function fetchChartData(){
     }
 }
 
-export function fetchDataForWalletChart(setData){
+export function fetchDataForWalletChart(){
     return dispatch => {
         fetch("https://api.coingecko.com/api/v3/coins/ethereum/market_chart/range?vs_currency=usd&from=1636162355&to=1638754355")
         .then(resp => resp.json())
         .then(data => dispatch({type: SET_WALLET_CHART, payload: renderMarketData(data.prices)}))
+    }
+}
+export const snapshotsAreCurrent = (snapshotDate) => {
+    let today = new Date()
+    return snapshotDate.getFullYear() === today.getFullYear() &&
+    snapshotDate.getMonth() === today.getMonth() &&
+    snapshotDate.getDate() === today.getDate();
+}
+
+
+export function updateWalletSnapshots(snapshots){
+    return dispatch => {
+    //let snapshotDate = new Date (snapshots[0].unix);
+    console.log(snapshots);
     }
 }
 
