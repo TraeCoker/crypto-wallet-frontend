@@ -16,19 +16,21 @@ export function fetchDataForWalletChart(setData){
     }
 }
 
-function renderData(data){
-    const labels = [1, 2, 3, 4]
-    const formatedData = data.map(array =>{
-        return {x: array[0], y: array[1]}
+export function renderData(data){
+    const xAxis = []
+    const yAxis = []
+    data.forEach(array =>{
+        xAxis.push(array[0])
+        yAxis.push(array[1])
     })
 
 
     return data = {
-    labels,
+    labels: xAxis,
     datasets: [
       {
         label: 'Ethereum',
-        data: formatedData,
+        data: yAxis,
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -32,29 +32,20 @@ export const options = {
       display: true,
       text: 'Chart.js Line Chart',
     },
+    xAxes: [{
+        type: 'time',
+        ticks: {
+            autoSkip: true,
+            maxTicksLimit: 20
+        }
+    }]
   },
 };
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-  ],
-};
 
 export function Chart() {
+const data = useSelector(state => state.chart.chartData)
   return <Line options={options} data={data} />;
 }
