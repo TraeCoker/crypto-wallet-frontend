@@ -12,7 +12,7 @@ export function fetchDataForWalletChart(setData){
     return dispatch => {
         fetch("https://api.coingecko.com/api/v3/coins/ethereum/market_chart/range?vs_currency=usd&from=1636162355&to=1638754355")
         .then(resp => resp.json())
-        .then(data => dispatch({type: SET_WALLET_CHART, payload: renderData(data.prices)})
+        .then(data => dispatch({type: SET_WALLET_CHART, payload: renderData(data.prices)}))
     }
 }
 
