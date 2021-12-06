@@ -20,7 +20,8 @@ export function renderData(data){
     const xAxis = []
     const yAxis = []
     data.forEach(array =>{
-        xAxis.push(array[0])
+        let date = new Date(array[0])
+        xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}))
         yAxis.push(array[1])
     })
 
