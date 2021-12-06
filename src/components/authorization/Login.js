@@ -1,7 +1,7 @@
 import { useState }from 'react';
 import './auth.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { loginUser, renderCurrentPrices } from '../../redux/actions/userActions';
+import { loginUser} from '../../redux/actions/userActions';
 import { Navigate } from 'react-router-dom';
 
 export default function Login() {
@@ -9,7 +9,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(state => state.user.isLoggedIn)
-  const coins = useSelector(state => state.coins)
+ 
 
   if (isLoggedIn) {
     return <Navigate from="/signup" to="/wallet" />
@@ -21,7 +21,6 @@ export default function Login() {
      user:{ 
       email: email,
       password: password,
-      current_prices: renderCurrentPrices(coins),
      }
       };
   
