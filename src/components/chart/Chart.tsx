@@ -34,12 +34,20 @@ export const options = {
     },
   },
   scales: {
-      x: {
-    ticks: {
-        autoSkip: true,
-        maxTicksLimit: 7
+    y: {
+        ticks: {
+            callback: function(value) {
+                return '$' + value;
+            }
+        }
+    },
+    x: {
+        ticks: {
+            autoSkip: true,
+            maxTicksLimit: 7
+        }
     }
-}}
+}
 };
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];

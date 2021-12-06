@@ -22,7 +22,7 @@ export function renderData(data){
     data.forEach(array =>{
         let date = new Date(array[0])
         xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}))
-        yAxis.push(array[1])
+        yAxis.push(array[1].toFixed(2))
     })
 
 
