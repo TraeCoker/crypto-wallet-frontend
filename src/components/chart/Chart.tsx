@@ -35,10 +35,12 @@ export const options = {
   },
   scales: {
     y: {
+        beginAtZero: true,
         ticks: {
             callback: function(value) {
                 return '$' + value;
-            }
+            },
+            
         }
     },
     x: {
