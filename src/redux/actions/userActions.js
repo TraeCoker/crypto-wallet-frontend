@@ -1,4 +1,5 @@
 import { SET_USER } from "./constants";
+import { renderChartFromSnapshots } from "./chartActions";
 
 
 const setToken = token => {
@@ -37,9 +38,9 @@ export function loginUser(user){
         })
         .then(r => r.json())
         .then(data => {
-            console.log(data.user)
-        setToken(data.jwt)
-        dispatch({type: SET_USER, payload: data.user})
+        setToken(data.jwt);
+        dispatch({type: SET_USER, payload: data.user});
+        renderChartFromSnapshots(data.user.snapshots);
         }
     );
     }

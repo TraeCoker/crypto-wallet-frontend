@@ -9,9 +9,9 @@ export default function WalletContainer() {
     const wallet = useSelector(state => state.user.currentUser.wallet);
     const dispatch = useDispatch();
     
-    useEffect(() => {
-        dispatch(fetchDataForWalletChart());
-    }, [])
+    //useEffect(() => {
+    //    dispatch(fetchDataForWalletChart());
+    //}, [])
 
     if (!isLoggedIn) {
         return <Navigate from="/wallet" to="/login" />

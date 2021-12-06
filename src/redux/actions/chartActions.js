@@ -38,3 +38,7 @@ export function renderData(data){
     ],
   }
 }
+
+export function renderChartFromSnapshots(snapshots) {
+    console.log(snapshots)
+}
