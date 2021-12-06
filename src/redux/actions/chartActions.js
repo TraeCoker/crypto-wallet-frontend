@@ -12,6 +12,26 @@ export function fetchDataForWalletChart(startDate){
     return dispatch => {
         fetch("https://api.coingecko.com/api/v3/coins/ethereum/market_chart/range?vs_currency=usd&from=1636162355&to=1638754355")
         .then(resp => resp.json())
-        .then(data => console.log(data))
+        .then(data => console.log(renderData(data.prices)))
     }
+}
+
+function renderData(data){
+    const labels = [1, 2, 3, 4]
+    const formatedData = data.map(array =>{
+        return {x: array[0], y: array[1]}
+    })
+
+
+    return data = {
+    labels,
+    datasets: [
+      {
+        label: 'Ethereum',
+        data: formatedData,
+        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      },
+    ],
+  }
 }
