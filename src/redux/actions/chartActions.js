@@ -75,6 +75,30 @@ export function renderWalletData(data) {
         borderColor: 'rgb(53, 162, 235)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
+      {
+        label: 'Ethereum',
+        data: ethereum,
+        borderColor: 'rgb(184, 28, 201)',
+        backgroundColor: 'rgba(184, 28, 201, 0.5)',
+      },
+      {
+        label: 'Cardano',
+        data: cardano,
+        borderColor: 'rgb(237, 146, 26)',
+        backgroundColor: 'rgba(237, 146, 26, 0.5)',
+      },
+      {
+        label: 'Tether',
+        data: tether,
+        borderColor: 'rgb(26, 237, 135)',
+        backgroundColor: 'rgba(26, 237, 135, 0.5)',
+      },
+      {
+        label: 'Solana',
+        data: solana,
+        borderColor: 'rgb(237, 26, 26)',
+        backgroundColor: 'rgba(237, 26, 26, 0.5)',
+      },
     ],
   }
 }
