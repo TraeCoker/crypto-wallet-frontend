@@ -1,4 +1,4 @@
-import { SET_CHART, SET_WALLET_CHART } from "../actions/constants";
+import { SET_CHART, SET_WALLET_CHART, SET_RAW_DATA } from "../actions/constants";
 
 export default function chartReducer(state = {
     marketDisplay: false,
