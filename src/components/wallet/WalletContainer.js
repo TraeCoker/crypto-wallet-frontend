@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Navigate } from 'react-router';
-import { retrieveWalletChartData, renderRawData } from '../../redux/actions/chartActions';
+import { retrieveWalletChartData, renderWalletChart } from '../../redux/actions/chartActions';
 import { Chart } from '../chart/Chart.tsx';
 
 export default function WalletContainer() {
@@ -17,7 +17,7 @@ export default function WalletContainer() {
 
     useEffect(() => {
         if (rawData.bitcoin && rawData.ethereum && rawData.tether && rawData.solana && rawData.cardano){
-            renderRawData(rawData);
+            dispatch(renderWalletChart(rawData));
         }
     }, [rawData])
 

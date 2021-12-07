@@ -1,5 +1,5 @@
 import { SET_USER, SET_WALLET_CHART } from "./constants";
-import { renderWalletData } from "./chartActions";
+import { renderChartData } from "./chartActions";
 
 
 const setToken = token => {
@@ -40,7 +40,7 @@ export function loginUser(user){
         .then(data => {
         setToken(data.jwt);
         dispatch({type: SET_USER, payload: data.user});
-        dispatch({type: SET_WALLET_CHART, payload: renderWalletData(data.user.snapshots)})
+        dispatch({type: SET_WALLET_CHART, payload: renderChartData(data.user.snapshots)})
         }
     );
     }

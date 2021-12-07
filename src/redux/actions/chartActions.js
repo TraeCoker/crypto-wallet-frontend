@@ -21,10 +21,10 @@ export function fetchWalletData(coin, start, end){
     };
 };
 
-export function retrieveWalletChartData(snapshots){
+export function retrieveWalletChartData(dayshots){
     return dispatch => {
         let today = new Date()
-        let start = snapshots[0].unix / 1000;
+        let start = dayshots[0].unix / 1000;
         let end = today.getTime() / 1000;
         
         dispatch(fetchWalletData("bitcoin", start, end))
@@ -73,7 +73,7 @@ export function renderRawData(rawData, snapshots){
     //rawData = [{bitcoin: [day/hr, price]}, {ethereum: [day/hr, price]}, ...]
     //snapshots = [{id: 1, bitcoin: .005, unix: 3133113,}...]
 
-    //const stockChangeDates = snapshots.map(snap => snap.unix);
+    //const stockChangeDates =snapshots.map(day => day.unix);
 
     let filteredData = {}
     const keys = Object.keys(rawData)
@@ -99,12 +99,16 @@ export function renderRawData(rawData, snapshots){
         renderedData.push(pricesByDay)
     }
 
-    console.log(renderedData)
+    return renderedData
 }
 
+export function renderWalletChart(rawData, snapshots){
+    return dispatch => {
+        dispatch({type: SET_WALLET_CHART, payload: renderChartData(renderRawData(rawData))})
+    }
+}
 
-
-export function renderWalletData(data) {
+export function renderChartData(data) {
     const xAxis = []
     const total = []
     const bitcoin = []
@@ -113,15 +117,15 @@ export function renderWalletData(data) {
     const tether = []
     const solana = []
 
-    data.forEach(snap =>{
-        let date = new Date(snap.unix)
+    data.forEach(day =>{
+        let date = new Date(day.unix)
         xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}))
-        total.push(snap.total);
-        bitcoin.push(snap.bitcoin);
-        ethereum.push(snap.ethereum);
-        cardano.push(snap.cardano);
-        tether.push(snap.tether);
-        solana.push(snap.solana);
+        //total.push(day.total);
+        bitcoin.push(day.bitcoin);
+        ethereum.push(day.ethereum);
+        cardano.push(day.cardano);
+        tether.push(day.tether);
+        solana.push(day.solana);
     })
 
 
