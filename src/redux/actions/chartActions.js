@@ -8,7 +8,35 @@ export function fetchChartData(){
     }
 }
 
+export function fetchWalletData(coin, start, end){
+    return dispatch => {
+      
+        console.log(`https://api.coingecko.com/api/v3/coins/${coin}/market_chart/range?vs_currency=usd&from=${start}&to=${end}`)
+        fetch(`https://api.coingecko.com/api/v3/coins/${coin}/market_chart/range?vs_currency=usd&from=${start}&to=${end}`)
+        .then(resp => resp.json())
+        .then(data => dispatch({type: `SET_${coin.toUpperCase()}_SNAP`, payload: data.prices}))
+    }
+}
 
+export function updateWallet(snapshots){
+    return dispatch => {
+    let lastSnapshot = new Date(snapshots[0].unix)
+    let today = new Date()
+
+    if (datesAreSame(lastSnapshot, today)){
+        let start = snapshots[0].unix / 1000;
+        let end = today.getTime() / 1000;
+        
+        dispatch(fetchWalletData("bitcoin", start, end))
+        dispatch(fetchWalletData("ethereum", start, end))
+        dispatch(fetchWalletData("tether", start, end))
+        dispatch(fetchWalletData("cardano", start, end))
+        dispatch(fetchWalletData("solana", start, end))
+
+    }
+
+    }
+}
 
 export const datesAreSame = (first, second) => {
     
@@ -18,25 +46,7 @@ export const datesAreSame = (first, second) => {
 }
 
 
-export function updateWalletSnapshots(snapshots){
-    return dispatch => {
-    let lastSnapshot = new Date(snapshots[0].unix)
-    let today = new Date()
 
-    if (datesAreSame(lastSnapshot, today)){
-        let start = snapshots[0].unix / 1000;
-        let end = today.getTime() / 1000;
-        
-        dispatch(fetchDataForSnapshots("bitcoin", start, end))
-        dispatch(fetchDataForSnapshots("ethereum", start, end))
-        dispatch(fetchDataForSnapshots("tether", start, end))
-        dispatch(fetchDataForSnapshots("cardano", start, end))
-        dispatch(fetchDataForSnapshots("solana", start, end))
-
-    }
-
-    }
-}
 
 export function renderMarketData(data){
     const xAxis = []
