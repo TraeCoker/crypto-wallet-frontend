@@ -11,7 +11,7 @@ export default function WalletContainer() {
     const dispatch = useDispatch();
     
     useEffect(() => {
-        dispatch(updateWalletSnapshots(snapshots));
+        
     }, [])
 
     if (!isLoggedIn) {

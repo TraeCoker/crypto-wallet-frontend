@@ -8,14 +8,8 @@ export function fetchChartData(){
     }
 }
 
-export function fetchDataForSnapshots(coin, start, end){
-    return dispatch => {
-        console.log(`https://api.coingecko.com/api/v3/coins/${coin}/market_chart/range?vs_currency=usd&from=${start}&to=${end}`)
-        fetch(`https://api.coingecko.com/api/v3/coins/${coin}/market_chart/range?vs_currency=usd&from=${start}&to=${end}`)
-        .then(resp => resp.json())
-        .then(data => dispatch({type: `SET_${coin}_SNAP`, payload: data.prices}))
-    }
-}
+
+
 export const datesAreSame = (first, second) => {
     
     return first.getFullYear() === second.getFullYear() &&
@@ -32,7 +26,7 @@ export function updateWalletSnapshots(snapshots){
     if (datesAreSame(lastSnapshot, today)){
         let start = snapshots[0].unix / 1000;
         let end = today.getTime() / 1000;
-
+        
         dispatch(fetchDataForSnapshots("bitcoin", start, end))
         dispatch(fetchDataForSnapshots("ethereum", start, end))
         dispatch(fetchDataForSnapshots("tether", start, end))
