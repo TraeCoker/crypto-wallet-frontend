@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Navigate } from 'react-router';
-import { updateWalletSnapshots } from '../../redux/actions/chartActions';
+import { retrieveWalletChartData } from '../../redux/actions/chartActions';
 import { Chart } from '../chart/Chart.tsx';
 
 export default function WalletContainer() {
@@ -11,7 +11,7 @@ export default function WalletContainer() {
     const dispatch = useDispatch();
     
     useEffect(() => {
-        
+        dispatch(retrieveWalletChartData(snapshots));
     }, [])
 
     if (!isLoggedIn) {

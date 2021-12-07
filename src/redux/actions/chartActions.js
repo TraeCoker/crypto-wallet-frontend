@@ -14,16 +14,13 @@ export function fetchWalletData(coin, start, end){
         console.log(`https://api.coingecko.com/api/v3/coins/${coin}/market_chart/range?vs_currency=usd&from=${start}&to=${end}`)
         fetch(`https://api.coingecko.com/api/v3/coins/${coin}/market_chart/range?vs_currency=usd&from=${start}&to=${end}`)
         .then(resp => resp.json())
-        .then(data => dispatch({type: `SET_${coin.toUpperCase()}_SNAP`, payload: data.prices}))
+        .then(data => console.log(data.prices))
     }
 }
 
-export function updateWallet(snapshots){
+export function retrieveWalletChartData(snapshots){
     return dispatch => {
-    let lastSnapshot = new Date(snapshots[0].unix)
-    let today = new Date()
-
-    if (datesAreSame(lastSnapshot, today)){
+        let today = new Date()
         let start = snapshots[0].unix / 1000;
         let end = today.getTime() / 1000;
         
@@ -32,8 +29,6 @@ export function updateWallet(snapshots){
         dispatch(fetchWalletData("tether", start, end))
         dispatch(fetchWalletData("cardano", start, end))
         dispatch(fetchWalletData("solana", start, end))
-
-    }
 
     }
 }
@@ -69,6 +64,10 @@ export function renderMarketData(data){
       },
     ],
   }
+}
+
+export function renderDataSets(data){
+
 }
 
 export function renderWalletData(data) {
