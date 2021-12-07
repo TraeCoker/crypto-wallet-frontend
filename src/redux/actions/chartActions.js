@@ -69,9 +69,30 @@ export function renderMarketData(data){
   }
 }
 
-export function renderRawData(rawData){
+export function renderRawData(rawData, snapshots){
+    //rawData = [{bitcoin: [day/hr, price]}, {ethereum: [day/hr, price]}, ...]
+    //snapshots = [{id: 1, bitcoin: .005, unix: 3133113,}...]
+
+    const stockChangeDates = snapshots.map(snap => snap.unix);
+
+    const filteredDates = rawData.map(priceArray => {
+        for (const coin in object){
+            const dates = object[coin].filter(date => {
+                const dateObj = new Date(date[0]);
+                if (dateObj.getUTCHours() === 1){
+                    return date
+                }
+            })
+
+            
+            return {coin: dates}
+            
+        }
+    })
 
 }
+
+
 
 export function renderWalletData(data) {
     const xAxis = []
