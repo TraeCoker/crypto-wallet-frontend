@@ -75,11 +75,12 @@ export function renderRawData(rawData, snapshots){
 
     //const stockChangeDates = snapshots.map(snap => snap.unix);
 
-    let renderedData = {}
-    const rawDataKeys = Object.keys(rawData)
+    let filteredData = {}
+    const keys = Object.keys(rawData)
 
-    rawDataKeys.forEach(coinKey =>
-        renderedData[coinKey] = rawData[coinKey].filter(date => {
+
+    keys.forEach(coinKey =>
+        filteredData[coinKey] = rawData[coinKey].filter(date => {
                    const dateObj = new Date(date[0]);
                    if (dateObj.getUTCHours() === 1){
                        return date
@@ -87,17 +88,16 @@ export function renderRawData(rawData, snapshots){
                })
     )
 
-        //for (const coin in filteredDates){
-         //   for (const priceData in filteredDates[coin]){
-           //     const dates = filteredDates[coin][priceData].filter(date => {
-         //       const dateObj = new Date(date[0]);
-             //   if (dateObj.getUTCHours() === 1){
-           //         return date
-           //     }
-           // })    
-       // }
-    //}
+    let span = filteredData[keys[0]].length 
+    let renderedData = []
+    
+    for (let i =0; i < span; i++){
+        let pricesByDay = {}
+        keys.forEach(key => pricesByDay[key] = filteredData[key][i][1] )
+        pricesByDay["unix"] = filteredData[keys[0]][i][0]
 
+        renderedData.push(pricesByDay)
+    }
 
     console.log(renderedData)
 }
