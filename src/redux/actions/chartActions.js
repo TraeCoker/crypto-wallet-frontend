@@ -15,9 +15,8 @@ export function fetchWalletData(coin, start, end){
         fetch(`https://api.coingecko.com/api/v3/coins/${coin}/market_chart/range?vs_currency=usd&from=${start}&to=${end}`)
         .then(resp => resp.json())
         .then(data => {
-            const dataObject = {}
-            dataObject[coin] = data.prices
-            return dispatch({type: SET_RAW_DATA, payload: dataObject})
+    
+            return dispatch({type: SET_RAW_DATA, payload: [coin, data.prices]})
         });
     };
 };

@@ -3,7 +3,7 @@ import { SET_CHART, SET_WALLET_CHART, SET_RAW_DATA } from "../actions/constants"
 export default function chartReducer(state = {
     marketDisplay: false,
     chartData: [],
-    rawData: []
+    rawData: {}
 }, action ){
 
     switch(action.type){
@@ -12,8 +12,8 @@ export default function chartReducer(state = {
         case SET_WALLET_CHART:
             return {...state, marketDisplay: false, chartData: action.payload}
         case SET_RAW_DATA:
-            console.log({...state, rawData: [...state.rawData, action.payload]})
-            return {...state, rawData: [...state.rawData, action.payload]}
+            console.log({...state, rawData: {...state.rawData, [action.payload[0]]: action.payload[1]}})
+            return {...state, rawData: {...state.rawData, [action.payload[0]]: action.payload[1]}}
         default:
             return state;
     }
