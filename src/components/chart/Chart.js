@@ -26,7 +26,7 @@ export const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: 'top' as const,
+      position: 'top',
     },
     title: {
       display: true,
@@ -52,8 +52,6 @@ export const options = {
   },
 
 }
-
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
 
 export function Chart() {

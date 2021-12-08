@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Navigate } from 'react-router';
 import { retrieveWalletChartData, renderWalletChart } from '../../redux/actions/chartActions';
-import { Chart } from '../chart/Chart.tsx';
+import { Chart } from '../chart/Chart.js';
 import { WalletRow } from './WalletRow';
 
 export default function WalletContainer() {
