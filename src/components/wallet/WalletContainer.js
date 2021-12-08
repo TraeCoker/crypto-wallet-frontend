@@ -27,14 +27,11 @@ export default function WalletContainer() {
 
     return (
         <div>
-    
             <h1>Wallet</h1>
             <Chart />
             <ol>
                 {Object.entries(wallet).map(([key, value]) => { if (key !== "id") return <li key={key}>{key} - {value}</li>  })}
             </ol>
-           
-        
         </div>
     )
 }

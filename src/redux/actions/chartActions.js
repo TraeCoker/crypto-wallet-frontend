@@ -36,14 +36,6 @@ export function retrieveWalletChartData(snapshots){
     }
 }
 
-export const datesAreSame = (first, second) => {
-    
-    return first.getFullYear() === second.getFullYear() &&
-    first.getMonth() === second.getMonth() &&
-    first.getDate() === second.getDate();
-}
-
-
 
 
 export function renderMarketData(data){
@@ -70,11 +62,7 @@ export function renderMarketData(data){
 }
 
 export function renderRawData(rawData){
-    //rawData = [{bitcoin: [day/hr, price]}, {ethereum: [day/hr, price]}, ...]
-    //snapshots = [{id: 1, bitcoin: .005, unix: 3133113,}...]
-
-    //const stockChangeDates =snapshots.map(day => day.unix);
-
+   
     let filteredData = {}
     const keys = Object.keys(rawData)
 
@@ -101,6 +89,7 @@ export function renderRawData(rawData){
 
     return renderedData
 }
+
 
 export function renderWalletChart(rawData, snapshots){
     return dispatch => {
