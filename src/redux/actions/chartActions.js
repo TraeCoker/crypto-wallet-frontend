@@ -21,10 +21,10 @@ export function fetchWalletData(coin, start, end){
     };
 };
 
-export function retrieveWalletChartData(dayshots){
+export function retrieveWalletChartData(snapshots){
     return dispatch => {
         let today = new Date()
-        let start = dayshots[0].unix / 1000;
+        let start = snapshots[0].unix / 1000;
         let end = today.getTime() / 1000;
         
         dispatch(fetchWalletData("bitcoin", start, end))
@@ -104,7 +104,7 @@ export function renderRawData(rawData){
 
 export function renderWalletChart(rawData, snapshots){
     return dispatch => {
-        dispatch({type: SET_WALLET_CHART, payload: renderChartData(renderRawData(rawData), snapshots)})
+        dispatch({type: SET_WALLET_CHART, payload: renderWalletChartData(renderRawData(rawData), snapshots)})
     }
 }
 
