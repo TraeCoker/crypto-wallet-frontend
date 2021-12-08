@@ -206,7 +206,7 @@ export function renderWalletChartData(data, snapshots) {
             tether.push(usdt);
             solana.push(sol);
             total.push(sum);
-        } else if (day.unix > snapshotsCopy[0].unix && day.unix <= snapshotsCopy[1].unix) {
+        } else {
             const btc = day.bitcoin * snapshotsCopy[1].bitcoin
             const eth = day.ethereum * snapshotsCopy[1].ethereum
             const ada = day.cardano * snapshotsCopy[1].cardano

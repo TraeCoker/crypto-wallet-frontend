@@ -10,6 +10,7 @@ export default function chartReducer(state = {
         case SET_CHART:
             return {...state, marketDisplay: true, chartData: action.payload}
         case SET_WALLET_CHART:
+            console.log({...state, marketDisplay: false, chartData: action.payload})
             return {...state, marketDisplay: false, chartData: action.payload}
         case SET_RAW_DATA:
             console.log({...state, rawData: {...state.rawData, [action.payload[0]]: action.payload[1]}})
