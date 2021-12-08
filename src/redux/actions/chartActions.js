@@ -8,6 +8,7 @@ export function fetchChartData(){
     }
 }
 
+
 export function fetchWalletData(coin, start, end){
     return dispatch => {
       
