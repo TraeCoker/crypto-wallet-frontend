@@ -21,7 +21,7 @@ export function createUser(user){
         .then(data => {
         setToken(data.jwt);
         dispatch({type: SET_USER, payload: data.user});
-        dispatch({type: SET_WALLET, payload: data.user.wallet});
+        dispatch({type: SET_WALLET, payload: [data.user.wallet, data.user.snapshots]});
         dispatch({type: SET_WALLET_CHART, payload: renderChartData(data.user.snapshots)});
         }
     );
@@ -42,7 +42,7 @@ export function loginUser(user){
         .then(data => {
         setToken(data.jwt);
         dispatch({type: SET_USER, payload: data.user});
-        dispatch({type: SET_WALLET, payload: data.user.wallet});
+        dispatch({type: SET_WALLET, payload: [data.user.wallet, data.user.snapshots]});
         dispatch({type: SET_WALLET_CHART, payload: renderChartData(data.user.snapshots)});
     }
     );

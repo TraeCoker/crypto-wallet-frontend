@@ -7,14 +7,13 @@ import { WalletRow } from './WalletRow';
 
 export default function WalletContainer() {
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);
-    const wallet = useSelector(state => state.wallet);
-    const snapshots = useSelector(state => state.user.currentUser.snapshots);
+    const wallet = useSelector(state => state.wallet.current);
+    const snapshots = useSelector(state => state.wallet.snapshots);
     const rawData = useSelector(state => state.chart.rawData);
     const dispatch = useDispatch();
     
     useEffect(() => {
         if (snapshots) dispatch(retrieveWalletChartData(snapshots));
-
     }, [])
 
     useEffect(() => {
