@@ -1,4 +1,4 @@
-import { SET_USER, SET_WALLET_CHART } from "./constants";
+import { SET_USER, SET_WALLET_CHART, SET_WALLET } from "./constants";
 import { renderChartData } from "./chartActions";
 
 
