@@ -33,10 +33,14 @@ export default function WalletContainer() {
     return (
         <div className="wallet-container">
             <h1>Wallet</h1>
-            <Chart />
-            <ol>
-                {Object.entries(wallet).map(([key, value]) => { if (key !== "id") return <li key={key}><WalletRow name={key} value={value} coin={coins.find(c => c.id === key)}/></li>  })}
-            </ol>
+            <div className="chart-container">
+                <Chart />
+            </div>
+            <div className="wallet">
+            
+                {Object.entries(wallet).map(([key, value]) => { if (key !== "id") return <WalletRow key={key} name={key} value={value} coin={coins.find(c => c.id === key)}/>  })}
+            
+            </div>
         </div>
     )
 }
