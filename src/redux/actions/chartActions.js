@@ -69,7 +69,7 @@ export function renderMarketData(data){
   }
 }
 
-export function renderRawData(rawData, snapshots){
+export function renderRawData(rawData){
     //rawData = [{bitcoin: [day/hr, price]}, {ethereum: [day/hr, price]}, ...]
     //snapshots = [{id: 1, bitcoin: .005, unix: 3133113,}...]
 
@@ -104,28 +104,125 @@ export function renderRawData(rawData, snapshots){
 
 export function renderWalletChart(rawData, snapshots){
     return dispatch => {
-        dispatch({type: SET_WALLET_CHART, payload: renderChartData(renderRawData(rawData))})
+        dispatch({type: SET_WALLET_CHART, payload: renderChartData(renderRawData(rawData), snapshots)})
     }
 }
 
 export function renderChartData(data) {
-    const xAxis = []
-    const total = []
-    const bitcoin = []
-    const ethereum = []
-    const cardano = []
-    const tether = []
-    const solana = []
+    
+    const xAxis = [];
+    const total = [];
+    const bitcoin = [];
+    const ethereum = [];
+    const cardano = [];
+    const tether = [];
+    const solana = [];
 
     data.forEach(day =>{
         let date = new Date(day.unix)
         xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}))
-        //total.push(day.total);
+        total.push(day.total);
         bitcoin.push(day.bitcoin);
         ethereum.push(day.ethereum);
         cardano.push(day.cardano);
         tether.push(day.tether);
         solana.push(day.solana);
+    })
+
+
+    return data = {
+    labels: xAxis,
+    datasets: [
+      {
+        label: 'total',
+        data: total,
+        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      },
+      {
+        label: 'Bitcoin',
+        hidden: true,
+        data: bitcoin,
+        borderColor: 'rgb(53, 162, 235)',
+        backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      },
+      {
+        label: 'Ethereum',
+        hidden: true,
+        data: ethereum,
+        borderColor: 'rgb(184, 28, 201)',
+        backgroundColor: 'rgba(184, 28, 201, 0.5)',
+      },
+      {
+        label: 'Cardano',
+        hidden: true,
+        data: cardano,
+        borderColor: 'rgb(237, 146, 26)',
+        backgroundColor: 'rgba(237, 146, 26, 0.5)',
+      },
+      {
+        label: 'Tether',
+        hidden: true,
+        data: tether,
+        borderColor: 'rgb(26, 237, 135)',
+        backgroundColor: 'rgba(26, 237, 135, 0.5)',
+      },
+      {
+        label: 'Solana',
+        hidden: true,
+        data: solana,
+        borderColor: 'rgb(237, 26, 26)',
+        backgroundColor: 'rgba(237, 26, 26, 0.5)',
+      },
+    ],
+  }
+}
+
+export function renderWalletChartData(data, snapshots) {
+    const snapshotsCopy = snapshots.map(s => s)
+    const xAxis = [];
+    const total = [];
+    const bitcoin = [];
+    const ethereum = [];
+    const cardano = [];
+    const tether = [];
+    const solana = [];
+
+    data.forEach(day =>{
+        let date = new Date(day.unix)
+        xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}))
+
+        if (snapshotsCopy.length <= 1 || day.unix < snapshotsCopy[1].unix){
+            const btc = day.bitcoin * snapshotsCopy[0].bitcoin
+            const eth = day.ethereum * snapshotsCopy[0].ethereum
+            const ada = day.cardano * snapshotsCopy[0].cardano
+            const usdt = day.tether * snapshotsCopy[0].tether 
+            const sol = day.solana * snapshotsCopy[0].solana
+            const sum = btc + eth + ada + sol
+
+            bitcoin.push(btc);
+            ethereum.push(eth);
+            cardano.push(ada);
+            tether.push(usdt);
+            solana.push(sol);
+            total.push(sum);
+        } else if (day.unix > snapshotsCopy[0].unix && day.unix <= snapshotsCopy[1].unix) {
+            const btc = day.bitcoin * snapshotsCopy[1].bitcoin
+            const eth = day.ethereum * snapshotsCopy[1].ethereum
+            const ada = day.cardano * snapshotsCopy[1].cardano
+            const usdt = day.tether * snapshotsCopy[1].tether 
+            const sol = day.solana * snapshotsCopy[1].solana
+            const sum = btc + eth + ada + sol
+
+            bitcoin.push(btc);
+            ethereum.push(eth);
+            cardano.push(ada);
+            tether.push(usdt);
+            solana.push(sol);
+            total.push(sum);
+
+            snapshotsCopy.shift()
+        }
     })
 
 
