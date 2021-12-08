@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Navigate } from 'react-router';
 import { retrieveWalletChartData, renderWalletChart } from '../../redux/actions/chartActions';
+import { fetchCurrentPrices } from '../../redux/actions/walletActions';
 import { Chart } from '../chart/Chart.js';
 import { WalletRow } from './WalletRow';
 
@@ -10,10 +11,12 @@ export default function WalletContainer() {
     const wallet = useSelector(state => state.wallet.current);
     const snapshots = useSelector(state => state.wallet.snapshots);
     const rawData = useSelector(state => state.chart.rawData);
+    const coins = useSelector(state => state.coins);
     const dispatch = useDispatch();
     
     useEffect(() => {
         if (snapshots) dispatch(retrieveWalletChartData(snapshots));
+        dispatch(fetchCurrentPrices());
     }, [])
 
     useEffect(() => {
@@ -31,7 +34,7 @@ export default function WalletContainer() {
             <h1>Wallet</h1>
             <Chart />
             <ol>
-                {Object.entries(wallet).map(([key, value]) => { if (key !== "id") return <li key={key}><WalletRow name={key} value={value}/></li>  })}
+                {Object.entries(wallet).map(([key, value]) => { if (key !== "id") return <li key={key}><WalletRow name={key} value={value} coin={coins.find(c => c.id === key)}/></li>  })}
             </ol>
         </div>
     )
