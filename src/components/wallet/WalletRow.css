@@ -18,8 +18,9 @@
    }
 
 .wallet-coin-row:hover {
-     cursor:pointer;
+     cursor: pointer;
      color:grey;
+    
      border-top: 1px solid grey;
      border-bottom: 1px solid grey;
 }
@@ -59,26 +60,5 @@
     width: 100%;
 }
 
-.wallet-coin-price {
-    width: 110px;
-}
 
-.wallet-coin-volume {
-    width: 155px;
-}
 
-.wallet-coin-market-cap {
-    width: 230px;
-}
-
-.wallet-coin-price-change {
-    width: 100px;
-}
-
-.red {
-    color: red;
-}
-
-.green {
-    color: green;
-}

@@ -10,8 +10,9 @@
   }
 
   .wallet {
-    width: 25%;
+    width: 30%;
     float: left;
+    text-align: center;
     padding: 30px;
-    margin: 20px;
+    margin: 25px;
   }
