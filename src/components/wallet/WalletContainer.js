@@ -14,6 +14,7 @@ export default function WalletContainer() {
     
     useEffect(() => {
         if (snapshots) dispatch(retrieveWalletChartData(snapshots));
+        
     }, [])
 
     useEffect(() => {
