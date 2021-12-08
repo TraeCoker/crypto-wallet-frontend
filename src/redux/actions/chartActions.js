@@ -200,12 +200,12 @@ export function renderWalletChartData(data, snapshots) {
             const sol = day.solana * snapshotsCopy[0].solana
             const sum = btc + eth + ada + sol
 
-            bitcoin.push(btc);
-            ethereum.push(eth);
-            cardano.push(ada);
-            tether.push(usdt);
-            solana.push(sol);
-            total.push(sum);
+            bitcoin.push(btc.toFixed(2));
+            ethereum.push(eth.toFixed(2));
+            cardano.push(ada.toFixed(2));
+            tether.push(usdt.toFixed(2));
+            solana.push(sol.toFixed(2));
+            total.push(sum.toFixed(2));
         } else {
             const btc = day.bitcoin * snapshotsCopy[1].bitcoin
             const eth = day.ethereum * snapshotsCopy[1].ethereum
@@ -214,12 +214,12 @@ export function renderWalletChartData(data, snapshots) {
             const sol = day.solana * snapshotsCopy[1].solana
             const sum = btc + eth + ada + sol
 
-            bitcoin.push(btc);
-            ethereum.push(eth);
-            cardano.push(ada);
-            tether.push(usdt);
-            solana.push(sol);
-            total.push(sum);
+            bitcoin.push(btc.toFixed(2));
+            ethereum.push(eth.toFixed(2));
+            cardano.push(ada.toFixed(2));
+            tether.push(usdt.toFixed(2));
+            solana.push(sol.toFixed(2));
+            total.push(sum.toFixed(2));
 
             snapshotsCopy.shift()
         }
