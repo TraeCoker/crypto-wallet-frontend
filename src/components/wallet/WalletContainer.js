@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Navigate } from 'react-router';
 import { retrieveWalletChartData, renderWalletChart } from '../../redux/actions/chartActions';
 import { Chart } from '../chart/Chart.tsx';
+import { WalletRow } from './WalletRow';
 
 export default function WalletContainer() {
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);
@@ -26,11 +27,11 @@ export default function WalletContainer() {
       }
 
     return (
-        <div>
+        <div className="wallet-container">
             <h1>Wallet</h1>
             <Chart />
             <ol>
-                {Object.entries(wallet).map(([key, value]) => { if (key !== "id") return <li key={key}>{key} - {value}</li>  })}
+                {Object.entries(wallet).map(([key, value]) => { if (key !== "id") return <li key={key}><WalletRow name={key} value={value}/></li>  })}
             </ol>
         </div>
     )
