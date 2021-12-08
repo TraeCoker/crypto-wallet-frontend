@@ -1,0 +1,84 @@
+.wallet-coin-container {
+    display: flex;
+    justify-content: center;
+}
+
+.wallet-coin-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    height: 80px;
+    border-bottom: 1px solid #000000;
+    width: 900px;
+}
+
+.wallet-coin-row:hover {
+    box-shadow: 0px 9px 4px -6px grey;
+   }
+
+.wallet-coin-row:hover {
+     cursor:pointer;
+     color:grey;
+     border-top: 1px solid grey;
+     border-bottom: 1px solid grey;
+}
+
+
+.wallet-coin {
+    display: flex;
+    align-items: center;
+    padding-right: 24px;
+    min-width: 300px;
+}
+
+.wallet-coin h1 {
+    font-size: 16px;
+    width: 150px;
+}
+
+.wallet-coin img {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+}
+
+.wallet-coin-symbol {
+    text-transform: uppercase;
+}
+
+.wallet-coin-rank {
+    width: 100px;
+    text-align: right;
+}
+
+.wallet-coin-metrics {
+    display: flex;
+    text-align: right;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.wallet-coin-price {
+    width: 110px;
+}
+
+.wallet-coin-volume {
+    width: 155px;
+}
+
+.wallet-coin-market-cap {
+    width: 230px;
+}
+
+.wallet-coin-price-change {
+    width: 100px;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}

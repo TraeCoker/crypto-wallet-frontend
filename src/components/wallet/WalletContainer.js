@@ -5,6 +5,7 @@ import { retrieveWalletChartData, renderWalletChart } from '../../redux/actions/
 import { fetchCurrentPrices } from '../../redux/actions/walletActions';
 import { Chart } from '../chart/Chart.js';
 import { WalletRow } from './WalletRow';
+import './WalletContainer.css'
 
 export default function WalletContainer() {
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);

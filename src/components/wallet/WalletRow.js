@@ -1,4 +1,5 @@
 import React from 'react'
+import './WalletRow.css'
 
 export const WalletRow = ({name, value, coin}) => {
     const earnings = coin.current_price * value
