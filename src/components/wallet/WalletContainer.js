@@ -13,6 +13,7 @@ export default function WalletContainer() {
     const snapshots = useSelector(state => state.wallet.snapshots);
     const rawData = useSelector(state => state.chart.rawData);
     const coins = useSelector(state => state.coins);
+    const userName = useSelector(state => state.user.currentUser.name)
     const dispatch = useDispatch();
     
     useEffect(() => {
@@ -32,12 +33,12 @@ export default function WalletContainer() {
 
     return (
         <div className="wallet-container">
-            <h1>Wallet</h1>
             <div className="chart-container">
+            <h1>Investment Earnings Over Time</h1>
                 <Chart />
             </div>
             <div className="wallet">
-            
+            <h1>{userName}'s Wallet</h1>
                 {Object.entries(wallet).map(([key, value]) => { if (key !== "id") return <WalletRow key={key} name={key} value={value} coin={coins.find(c => c.id === key)}/>  })}
             
             </div>

@@ -31,7 +31,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Chart.js Line Chart',
+      text: 'Span = daily. Click to toggle visibility.',
     },
   },
   scales: {
