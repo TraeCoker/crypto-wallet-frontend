@@ -8,3 +8,10 @@ export function fetchCurrentPrices(){
       .then(data => dispatch({type: SET_COINS, payload: data}))
     }
   }
+
+  export function updateWallet(transaction){
+      return dispatch => {
+          console.log(transaction)
+      }
+
+  }

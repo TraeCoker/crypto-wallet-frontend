@@ -46,7 +46,7 @@ export default function WalletContainer() {
             <div className="modal-container">
             <Modal show={showModal} handleClose={setShowModal} >
                 <div className="wallet-form">
-                <WalletForm clickedCoin={clickedCoin} />
+                <WalletForm clickedCoin={clickedCoin} walletId={wallet.id} />
                 </div>
             </Modal>
             </div>
