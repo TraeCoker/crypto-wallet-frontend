@@ -12,6 +12,17 @@ export function fetchCurrentPrices(){
   export function updateWallet(transaction){
       return dispatch => {
           console.log(transaction)
+          fetch(`http://localhost:3000/wallets/${transaction.id}`, {
+            method: "PATCH",
+            headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+             },
+            body: JSON.stringify({wallet: transaction})
+          })
+          .then(resp => resp.json())
+          .then(data => console.log(data))
       }
 
   }

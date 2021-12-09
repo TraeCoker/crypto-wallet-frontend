@@ -20,8 +20,8 @@ export const WalletForm = ({clickedCoin, walletId}) => {
         const total = amount / clickedCoin.current_price;
         const coin = clickedCoin.name.toLowerCase();
         const transaction = {
-            walletId,
-            coin,
+            id: walletId,
+            coin: coin,
             total,
         }
 
