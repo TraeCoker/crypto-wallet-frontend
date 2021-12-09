@@ -44,7 +44,9 @@ export default function WalletContainer() {
             </div>
             <div className="modal-container">
             <Modal show={showModal} handleClose={setShowModal} >
+                <div className="wallet-form">
                 <WalletForm/>
+                </div>
             </Modal>
             </div>
             <div className="wallet">
