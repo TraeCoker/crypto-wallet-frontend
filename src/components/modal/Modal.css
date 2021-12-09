@@ -7,14 +7,17 @@
     background: rgba(0, 0, 0, 0.6);
   }
   
-  .modal-main {
+  
+.modal-main {
     position:fixed;
     background: white;
-    width: 80%;
-    height: auto;
+    width: 50%;
+    height: 500px;
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
+    text-align: center;
+    padding: 70px 0;
   }
   
   .display-block {
