@@ -41,14 +41,21 @@ export default function WalletContainer() {
             <h1>Investment Earnings Over Time</h1>
                 <Chart />
             </div>
-            <Modal show={showModal} handleClose={setShowModal} />
+            <Modal show={showModal} handleClose={setShowModal} >
+            <p>Modal</p>
+            </Modal>
             <div className="wallet">
             <h1>{userName}'s Wallet</h1>
                 {Object.entries(wallet).map(([key, value]) => {
-                     if (key !== "id") return <WalletRow key={key} name={key} value={value} coin={coins.find(c => c.id === key)} openModal={setShowModal} />  
+                     if (key !== "id"){ 
+                         return <WalletRow key={key} 
+                                           name={key} 
+                                           value={value} 
+                                           coin={coins.find(c => c.id === key)} 
+                                           openModal={setShowModal} />  
+                        }
                     })
                 }
-            
             </div>
         </div>
     )
