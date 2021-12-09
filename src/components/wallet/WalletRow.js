@@ -1,8 +1,12 @@
 import React from 'react'
 import './WalletRow.css'
 
-export const WalletRow = ({name, value, coin, openModal}) => {
+export const WalletRow = ({name, value, coin, openModal, setClickedCoin}) => {
     const earnings = coin.current_price * value
+    const handleClick = () =>{
+        setClickedCoin(coin.name)
+        openModal(true)
+    }
     return (
         <div className="wallet-coin-container">
             <div className="wallet-coin-row">
@@ -12,7 +16,7 @@ export const WalletRow = ({name, value, coin, openModal}) => {
                         <p className="wallet-coin-symbol">{value} - {coin.symbol}</p>
                         <p>${parseFloat(earnings.toFixed(2)).toLocaleString()}</p>
                 </div>
-                    <button type="button" onClick={() => openModal(true)}>Buy or Sell</button>
+                    <button type="button" onClick={() => handleClick()}>Buy or Sell</button>
             </div>    
         </div>
     )

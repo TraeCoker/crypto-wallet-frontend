@@ -1,12 +1,12 @@
 
 
-export const WalletForm = () => {
+export const WalletForm = ({clickedCoin}) => {
 
     return (
         <div className="wallet-form">
             <form>
                 <label>
-                    <p>Buy</p>
+                    <h1>Buy {clickedCoin}</h1>
                     <input type="text"/>
                 </label>
                 <div>

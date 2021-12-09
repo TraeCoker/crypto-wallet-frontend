@@ -17,6 +17,7 @@ export default function WalletContainer() {
     const coins = useSelector(state => state.coins);
     const userName = useSelector(state => state.user.currentUser.name)
     const [showModal, setShowModal] = useState(false);
+    const [clickedCoin, setClickedCoin] = useState('');
     const dispatch = useDispatch();
     
     
@@ -45,7 +46,7 @@ export default function WalletContainer() {
             <div className="modal-container">
             <Modal show={showModal} handleClose={setShowModal} >
                 <div className="wallet-form">
-                <WalletForm/>
+                <WalletForm clickedCoin={clickedCoin} />
                 </div>
             </Modal>
             </div>
@@ -57,7 +58,8 @@ export default function WalletContainer() {
                                            name={key} 
                                            value={value} 
                                            coin={coins.find(c => c.id === key)} 
-                                           openModal={setShowModal} />  
+                                           openModal={setShowModal}
+                                           setClickedCoin={setClickedCoin} />  
                         }
                     })
                 }
