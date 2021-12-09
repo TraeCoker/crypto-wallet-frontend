@@ -4,7 +4,7 @@ import './WalletRow.css'
 export const WalletRow = ({name, value, coin, openModal, setClickedCoin}) => {
     const earnings = coin.current_price * value
     const handleClick = () =>{
-        setClickedCoin(coin.name)
+        setClickedCoin(coin)
         openModal(true)
     }
     return (

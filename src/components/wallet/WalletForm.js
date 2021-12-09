@@ -13,9 +13,10 @@ export const WalletForm = ({clickedCoin}) => {
         <div className="wallet-form">
             <form>
                 <label>
-                    <h1>Buy {clickedCoin}</h1>
-                    <input type="text" value={amount} onChange={ e => handleChange(e)}/>
+                    <h1>Buy {clickedCoin.name}</h1>
+                    <label>$</label><input type="text" value={amount} onChange={ e => handleChange(e)}/>
                 </label>
+                <h1></h1>
                 <div>
                     <button type="submit">Buy</button>
                 </div>
