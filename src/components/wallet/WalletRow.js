@@ -1,7 +1,7 @@
 import React from 'react'
 import './WalletRow.css'
 
-export const WalletRow = ({name, value, coin}) => {
+export const WalletRow = ({name, value, coin, openModal}) => {
     const earnings = coin.current_price * value
     return (
         <div className="wallet-coin-container">
@@ -12,7 +12,7 @@ export const WalletRow = ({name, value, coin}) => {
                         <p className="wallet-coin-symbol">{value} - {coin.symbol}</p>
                         <p>${parseFloat(earnings.toFixed(2)).toLocaleString()}</p>
                 </div>
-                    <button>Buy or Sell</button>
+                    <button type="button" onClick={() => openModal(true)}>Buy or Sell</button>
             </div>    
         </div>
     )

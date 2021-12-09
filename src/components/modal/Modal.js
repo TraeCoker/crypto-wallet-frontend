@@ -1,13 +1,13 @@
-import './modal.css';
+import './Modal.css';
 
-const Modal = ({ handleClose, show, children }) => {
+export const Modal = ({ handleClose, show, children }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
 
   return (
     <div className={showHideClassName}>
       <section className="modal-main">
         {children}
-        <button type="button" onClick={handleClose}>
+        <button type="button" onClick={() => handleClose(false)}>
           Close
         </button>
       </section>

@@ -5,6 +5,7 @@ import { retrieveWalletChartData, renderWalletChart } from '../../redux/actions/
 import { fetchCurrentPrices } from '../../redux/actions/walletActions';
 import { Chart } from '../chart/Chart.js';
 import { WalletRow } from './WalletRow';
+import { Modal } from '../modal/Modal';
 import './WalletContainer.css'
 
 export default function WalletContainer() {
@@ -14,7 +15,10 @@ export default function WalletContainer() {
     const rawData = useSelector(state => state.chart.rawData);
     const coins = useSelector(state => state.coins);
     const userName = useSelector(state => state.user.currentUser.name)
+    const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch();
+    
+    
     
     useEffect(() => {
         if (snapshots) dispatch(retrieveWalletChartData(snapshots));
@@ -37,9 +41,13 @@ export default function WalletContainer() {
             <h1>Investment Earnings Over Time</h1>
                 <Chart />
             </div>
+            <Modal show={showModal} handleClose={setShowModal} />
             <div className="wallet">
             <h1>{userName}'s Wallet</h1>
-                {Object.entries(wallet).map(([key, value]) => { if (key !== "id") return <WalletRow key={key} name={key} value={value} coin={coins.find(c => c.id === key)}/>  })}
+                {Object.entries(wallet).map(([key, value]) => {
+                     if (key !== "id") return <WalletRow key={key} name={key} value={value} coin={coins.find(c => c.id === key)} openModal={setShowModal} />  
+                    })
+                }
             
             </div>
         </div>
