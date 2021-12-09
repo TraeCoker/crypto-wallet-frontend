@@ -16,7 +16,7 @@ export const CoinRow = ({name, price, symbol, rank, image, volume, marketcap, pr
                 <p className="coin-rank"># {rank}</p>
             </div>
             <div className="coin-metrics">
-                <p className="coin-price">${price}</p>
+                <p className="coin-price">${price.toLocaleString()}</p>
                 <p className="coin-volume">Vol: ${volume.toLocaleString()}</p>
 
                 {priceChange < 0 ? (
