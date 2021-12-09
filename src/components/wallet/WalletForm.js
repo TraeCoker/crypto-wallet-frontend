@@ -3,7 +3,7 @@ import { useState } from "react"
 export const WalletForm = ({clickedCoin}) => {
     const [amount, setAmount] = useState('')
     const handleChange = (e) => {
-        const re = /^[0-9\b]+$/;
+        const re = /^(?:0|[1-9]\d+|)?(?:.?\d{0,2})?$/;
         if (e.target.value === '' || re.test(e.target.value)){
             setAmount(e.target.value)
         }
