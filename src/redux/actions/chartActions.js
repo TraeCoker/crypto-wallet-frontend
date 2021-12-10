@@ -56,17 +56,23 @@ export function renderMarketData(data){
     ],
   }
 }
+export function sameDay(d1, d2) {
+  return d1.getFullYear() === d2.getFullYear() &&
+    d1.getMonth() === d2.getMonth() &&
+    d1.getDate() === d2.getDate();
+}
 
 export function renderRawData(rawData){
    
     let filteredData = {}
     const keys = Object.keys(rawData)
+    const today = new Date()
 
 
     keys.forEach(coinKey =>
         filteredData[coinKey] = rawData[coinKey].filter(date => {
                    const dateObj = new Date(date[0]);
-                   if (dateObj.getUTCHours() === 1){
+                   if (sameDay(dateObj, today) || dateObj.getUTCHours() === 1){
                        return date
                    }
                })
@@ -102,10 +108,14 @@ export function renderChartData(data) {
     const cardano = [];
     const tether = [];
     const solana = [];
+    const today = new Date();
 
     data.forEach(day =>{
         let date = new Date(day.unix)
-        xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}))
+        if (sameDay(date, today)) {
+           xAxis.push("Today " + date.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit'}))
+          } else {
+          xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}))}
         total.push(day.total);
         bitcoin.push(day.bitcoin);
         ethereum.push(day.ethereum);
@@ -167,11 +177,15 @@ export function renderWalletChartData(data, snapshots) {
     const cardano = [];
     const tether = [];
     const solana = [];
+    const today = new Date;
 
     data.forEach(day =>{
         let date = new Date(day.unix)
-        xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}))
-
+        if (sameDay(date, today)) {
+          xAxis.push("Today " + date.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit'}))
+         } else {
+         xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}))}
+        
         if (snapshotsCopy.length <= 1 || day.unix < snapshotsCopy[1].unix){
             const btc = day.bitcoin * snapshotsCopy[0].bitcoin
             const eth = day.ethereum * snapshotsCopy[0].ethereum
@@ -200,7 +214,6 @@ export function renderWalletChartData(data, snapshots) {
             tether.push(usdt.toFixed(2));
             solana.push(sol.toFixed(2));
             total.push(sum.toFixed(2));
-
             snapshotsCopy.shift()
         }
     })
