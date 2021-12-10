@@ -53,7 +53,7 @@ export default function WalletContainer() {
             <div className="wallet">
             <h1>{userName}'s Wallet</h1>
                 {Object.entries(wallet).map(([key, value]) => {
-                     if (key !== "id"){ 
+                     if (key !== "id" && key !== "snapshots"){ 
                          return <WalletRow key={key} 
                                            name={key} 
                                            value={value} 
