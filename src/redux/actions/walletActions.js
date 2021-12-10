@@ -1,4 +1,4 @@
-import { SET_COINS } from "./constants"
+import { SET_COINS, UPDATE_WALLET } from "./constants"
 
 export function fetchCurrentPrices(){
     //returns top 10 coins for wallet rendering
@@ -22,7 +22,7 @@ export function fetchCurrentPrices(){
             body: JSON.stringify({wallet: transaction})
           })
           .then(resp => resp.json())
-          .then(data => console.log(data))
+          .then(data => dispatch({type: UPDATE_WALLET, payload: data}))
       }
 
   }
