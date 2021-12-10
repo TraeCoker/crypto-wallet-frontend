@@ -112,10 +112,12 @@ export function renderChartData(data) {
 
     data.forEach(day =>{
         let date = new Date(day.unix)
-        if (sameDay(date, today)) {
-           xAxis.push("Today " + date.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit'}))
-          } else {
-          xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}))}
+        sameDay(date, today) ? (
+          xAxis.push("Today " + date.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit'}))
+        ) : (
+         xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}))
+        )
+        
         total.push(day.total);
         bitcoin.push(day.bitcoin);
         ethereum.push(day.ethereum);
@@ -181,11 +183,12 @@ export function renderWalletChartData(data, snapshots) {
 
     data.forEach(day =>{
         let date = new Date(day.unix)
-        if (sameDay(date, today)) {
+        sameDay(date, today) ? (
           xAxis.push("Today " + date.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit'}))
-         } else {
-         xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}))}
-        
+        ) : (
+         xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}))
+        )
+
         if (snapshotsCopy.length <= 1 || day.unix < snapshotsCopy[1].unix){
             const btc = day.bitcoin * snapshotsCopy[0].bitcoin
             const eth = day.ethereum * snapshotsCopy[0].ethereum
