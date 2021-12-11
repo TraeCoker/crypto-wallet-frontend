@@ -1,9 +1,9 @@
-import React from 'react'
 import './WalletRow.css'
 
 export const WalletRow = ({name, value, coin, openModal, setClickedCoin}) => {
     const earnings = coin.current_price * value
     const handleClick = () =>{
+        
         setClickedCoin(coin)
         openModal(true)
     }
