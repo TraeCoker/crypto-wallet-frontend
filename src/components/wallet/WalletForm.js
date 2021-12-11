@@ -5,6 +5,7 @@ import coinsReducer from "../../redux/reducers/coinsReducer";
 
 export const WalletForm = ({clickedCoin, walletId, handleClose}) => {
     const [amount, setAmount] = useState('');
+    const [transactionType, setTransactionType] = useState('Buy')
     const dispatch = useDispatch();
 
 
@@ -34,12 +35,14 @@ export const WalletForm = ({clickedCoin, walletId, handleClose}) => {
         <div className="wallet-form">
             <form onSubmit={handleSubmit}>
                 <label>
-                    <h1>Buy {clickedCoin.name}</h1>
+                <button type="button" onClick={() => setTransactionType('Sell')}>Sell</button>
+                <button type="button" onClick={() => setTransactionType('Buy')}>Buy</button>
+                    <h1>{transactionType} {clickedCoin.name}</h1>
                     <label>$</label><input type="text" value={amount} onChange={ e => handleChange(e)}/>
                 </label>
                 <h1>{amount / clickedCoin.current_price} {clickedCoin.symbol}</h1>
                 <div>
-                    <button type="submit" >Buy</button>
+                    <button type="submit" >Submit Transaction</button>
                 </div>
             </form>
         </div>
