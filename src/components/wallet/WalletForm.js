@@ -35,6 +35,7 @@ export const WalletForm = ({clickedCoin, wallet, handleClose}) => {
         const transaction = {
             id: wallet.id,
             coin: coin,
+            transaction_type: transactionType,
             total,
         }
 
