@@ -1,4 +1,5 @@
 import './WalletRow.css'
+import Button from 'react-bootstrap/Button';
 
 export const WalletRow = ({name, value, coin, openModal, setClickedCoin}) => {
     const earnings = coin.current_price * value
@@ -16,7 +17,7 @@ export const WalletRow = ({name, value, coin, openModal, setClickedCoin}) => {
                         <p className="wallet-coin-symbol">{value} - {coin.symbol}</p>
                         <p>${parseFloat(earnings.toFixed(2)).toLocaleString()}</p>
                 </div>
-                    <button type="button" onClick={() => handleClick()}>Buy or Sell</button>
+                    <Button type="button" onClick={() => handleClick()}>Buy or Sell</Button>
             </div>    
         </div>
     )
