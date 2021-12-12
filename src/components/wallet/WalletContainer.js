@@ -5,7 +5,7 @@ import { retrieveWalletChartData, renderWalletChart } from '../../redux/actions/
 import { fetchCurrentPrices } from '../../redux/actions/walletActions';
 import { Chart } from '../chart/Chart.js';
 import { WalletRow } from './WalletRow';
-import { Modal } from '../modal/Modal';
+import { ModalComp } from '../modal/ModalComp';
 import { WalletForm } from './WalletForm';
 import './WalletContainer.css'
 
@@ -45,14 +45,14 @@ export default function WalletContainer() {
                 <Chart />
             </div>
             <div className="modal-container">
-            <Modal show={showModal} handleClose={setShowModal} >
+            <ModalComp show={showModal} handleClose={setShowModal} >
                 <div className="wallet-form">
                 <WalletForm clickedCoin={clickedCoin} 
                             wallet={wallet} 
                             handleClose={setShowModal}
                             coins={coins} />
                 </div>
-            </Modal>
+            </ModalComp>
             </div>
             <div className="wallet">
             <h1>{userName}'s Wallet</h1>
