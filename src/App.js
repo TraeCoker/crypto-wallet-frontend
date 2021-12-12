@@ -11,12 +11,6 @@ import WalletContainer from './components/wallet/WalletContainer';
 function App() {
   return (
     <div>
-      <Link to="/">Dashboard</Link>
-      <Link to="/login">Login</Link>
-      <Link to="/signup">Signup</Link>
-      <Link to="/market">Market</Link>
-      <Link to="/wallet">Wallet</Link>
-      
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
