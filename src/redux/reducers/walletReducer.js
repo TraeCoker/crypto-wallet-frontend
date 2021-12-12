@@ -8,7 +8,7 @@ export default function walletReducer(state = {
             return {current: action.payload[0], snapshots: action.payload[1]}
         case UPDATE_WALLET:
             console.log({current: action.payload.wallet, snapshots: [...state.snapshots, action.payload.snapshot]})
-            return {current: action.payload.wallet, snapshots: [...state.snapshots, action.payload.wallet]}
+            return {current: action.payload.wallet, snapshots: [...state.snapshots, action.payload.snapshot]}
         default:
             return state;
     }

@@ -1,4 +1,4 @@
-import { SET_CHART, SET_WALLET_CHART, SET_RAW_DATA } from "../actions/constants";
+import { SET_CHART, SET_WALLET_CHART, SET_RAW_DATA, UPDATE_WALLET_CHART } from "../actions/constants";
 
 export default function chartReducer(state = {
     marketDisplay: false,
@@ -15,7 +15,10 @@ export default function chartReducer(state = {
 
         case SET_RAW_DATA:
             return {...state, rawData: {...state.rawData, [action.payload[0]]: action.payload[1]}}
-            
+        case UPDATE_WALLET_CHART:
+            console.log("made it")
+            console.log(action.payload)
+            return state;
         default:
             return state;
     }

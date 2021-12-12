@@ -3,7 +3,7 @@ import { useDispatch} from "react-redux";
 import { updateWallet } from "../../redux/actions/walletActions";
 import coinsReducer from "../../redux/reducers/coinsReducer";
 
-export const WalletForm = ({clickedCoin, wallet, handleClose}) => {
+export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
     const [amount, setAmount] = useState('');
     const [transactionType, setTransactionType] = useState('Buy')
     const dispatch = useDispatch();
@@ -39,7 +39,7 @@ export const WalletForm = ({clickedCoin, wallet, handleClose}) => {
             total,
         }
 
-        dispatch(updateWallet(transaction));
+        dispatch(updateWallet(transaction, coins));
         setAmount('');
         handleClose(false);
     }

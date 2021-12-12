@@ -33,6 +33,7 @@ export default function WalletContainer() {
         }
     }, [rawData])
 
+    
     if (!isLoggedIn) {
         return <Navigate from="/wallet" to="/login" />
       }
@@ -46,7 +47,10 @@ export default function WalletContainer() {
             <div className="modal-container">
             <Modal show={showModal} handleClose={setShowModal} >
                 <div className="wallet-form">
-                <WalletForm clickedCoin={clickedCoin} wallet={wallet} handleClose={setShowModal} />
+                <WalletForm clickedCoin={clickedCoin} 
+                            wallet={wallet} 
+                            handleClose={setShowModal}
+                            coins={coins} />
                 </div>
             </Modal>
             </div>

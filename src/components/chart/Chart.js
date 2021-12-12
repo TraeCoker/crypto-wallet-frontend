@@ -57,5 +57,6 @@ export const options = {
 
 export function Chart() {
 const data = useSelector(state => state.chart.chartData)
+console.log(data)
   return <Line options={options} data={data} />;
 }
