@@ -278,7 +278,7 @@ export function renderSnapshotData(snapshot, currentCoins){
               const date = new Date(snapshot[coinKey])
               updatedAmounts["label"] = "Today " + date.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit'})
             } else {
-              updatedAmounts[coinKey] = snapshot[coinKey] * coin.find(c => c.id === coinKey).current_price  
+              updatedAmounts[coinKey] = snapshot[coinKey] * currentCoins.find(c => c.id === coinKey).current_price  
                };
           };
         });
