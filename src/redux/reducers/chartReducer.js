@@ -17,9 +17,13 @@ export default function chartReducer(state = {
         case SET_RAW_DATA:
             return {...state, rawData: {...state.rawData, [action.payload[0]]: action.payload[1]}}
         case UPDATE_WALLET_CHART:
+            
             const updatedAmounts = renderSnapshotData(action.payload.snapshot, action.payload.coins)
             console.log(updatedAmounts)
-            return state;
+            return {...state, chartData: {
+                                labels: [...state.chartData.labels, updatedAmounts.label],
+                                datasets: [...state.chartData.datasets]
+            }}
         default:
             return state;
     }

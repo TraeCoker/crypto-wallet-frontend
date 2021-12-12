@@ -24,6 +24,7 @@ export function fetchCurrentPrices(){
           .then(resp => resp.json())
           .then(data => {
             dispatch({type: UPDATE_WALLET, payload: data})
+            
             dispatch({type: UPDATE_WALLET_CHART, payload: {snapshot: data.snapshot, coins: currentCoins}})
           })
       }

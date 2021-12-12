@@ -89,8 +89,10 @@ export function renderRawData(rawData){
 
         renderedData.push(pricesByDay)
     }
-
+    console.log("here")
+    console.log(renderedData)
     return renderedData
+    
 }
 
 
@@ -270,6 +272,7 @@ export function renderSnapshotData(snapshot, currentCoins){
           const updatedAmounts= {}
           const keys = Object.keys(snapshot)
           const today = new Date()
+          let total = 0
         
         keys.forEach(coinKey =>{
           if(coinKey !== "id"){
@@ -279,9 +282,22 @@ export function renderSnapshotData(snapshot, currentCoins){
               updatedAmounts["label"] = "Today " + date.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit'})
             } else {
               updatedAmounts[coinKey] = snapshot[coinKey] * currentCoins.find(c => c.id === coinKey).current_price  
+              total = total += updatedAmounts[coinKey]
                };
           };
         });
-
+        updatedAmounts["total"] = total
         return updatedAmounts
+}
+
+export function renderUpdate(snapshot, coins){
+      const update = {}
+      const keys = Object.keys(snapshot);
+
+      keys.forEach(coinKey =>{
+        if(coinKey !== "id"){
+          update[coinKey] = coins[coinKey].current_price
+        }
+      })
+      return update
 }
