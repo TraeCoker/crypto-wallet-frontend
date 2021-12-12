@@ -6,6 +6,7 @@ import Signup from './components/authorization/Signup';
 import MarketContainer from './components/market/MarketContainer';
 import WalletContainer from './components/wallet/WalletContainer';
 
+
 function App() {
   return (
     <div>
@@ -14,12 +15,14 @@ function App() {
       <Link to="/signup">Signup</Link>
       <Link to="/market">Market</Link>
       <Link to="/wallet">Wallet</Link>
+      
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/market" element={<MarketContainer />} />
         <Route path="/wallet" element={<WalletContainer />} />
       </Routes>
+      <img src={Logo} />
     </div>
   );
 }
