@@ -225,9 +225,34 @@ export function renderWalletChartData(data, snapshots, update) {
             solana.push(sol.toFixed(2));
             total.push(sum.toFixed(2));
             snapshotsCopy.shift()
+            console.log(snapshotsCopy)
         }
     })
 
+    if (snapshotsCopy.length > 1){
+      const day = data.at(-1)
+      snapshotsCopy.forEach(snap =>{
+        let date = new Date(snap.unix)
+        sameDay(date, today) ? (
+          xAxis.push("Today " + date.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit'}))
+        ) : (
+         xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}))
+        )
+            const btc = day.bitcoin * snap.bitcoin
+            const eth = day.ethereum * snap.ethereum
+            const ada = day.cardano * snap.cardano
+            const usdt = day.tether * snap.tether 
+            const sol = day.solana * snap.solana
+            const sum = btc + eth + ada + sol
+
+            bitcoin.push(btc.toFixed(2));
+            ethereum.push(eth.toFixed(2));
+            cardano.push(ada.toFixed(2));
+            tether.push(usdt.toFixed(2));
+            solana.push(sol.toFixed(2));
+            total.push(sum.toFixed(2));
+      })
+    }
 
     return data = {
     labels: xAxis,
