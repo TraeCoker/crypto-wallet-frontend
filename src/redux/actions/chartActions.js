@@ -1,3 +1,4 @@
+import coinsReducer from "../reducers/coinsReducer";
 import { SET_CHART, SET_WALLET_CHART, SET_RAW_DATA } from "./constants";
 
 export function fetchChartData(){
@@ -263,4 +264,24 @@ export function renderWalletChartData(data, snapshots) {
       },
     ],
   }
+}
+
+export function renderSnapshotData(snapshot, currentCoins){
+          const updatedAmounts= {}
+          const keys = Object.keys(snapshot)
+          const today = new Date()
+        
+        keys.forEach(coinKey =>{
+          if(coinKey !== "id"){
+
+            if(coinKey === "unix"){
+              const date = new Date(snapshot[coinKey])
+              updatedAmounts["label"] = "Today " + date.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit'})
+            } else {
+              updatedAmounts[coinKey] = snapshot[coinKey] * coin.find(c => c.id === coinKey).current_price  
+               };
+          };
+        });
+
+        return updatedAmounts
 }
