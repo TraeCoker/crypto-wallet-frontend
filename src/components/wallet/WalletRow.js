@@ -14,8 +14,11 @@ export const WalletRow = ({name, value, coin, openModal, setClickedCoin}) => {
                 <div className="wallet-coin">
                         <img src={coin.image} alt={name + " image"} />
                         <h1>{coin.name}</h1>
-                        <p className="wallet-coin-symbol">{value} - {coin.symbol}</p>
-                        <p>${parseFloat(earnings.toFixed(2)).toLocaleString()}</p>
+                        <p className="wallet-coin-symbol">
+                        ${parseFloat(earnings.toFixed(2)).toLocaleString()}
+                        <br/>
+                        {value} - {coin.symbol}</p>
+                        
                 </div>
                     <Button type="button" onClick={() => handleClick()}>Buy or Sell</Button>
             </div>    

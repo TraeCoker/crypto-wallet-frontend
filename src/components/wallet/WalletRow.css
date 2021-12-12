@@ -1,7 +1,4 @@
-.wallet-coin-container {
-    display: flex;
-    justify-content: center;
-}
+
 
 .wallet-coin-row {
     display: flex;
@@ -30,28 +27,24 @@
     display: flex;
     align-items: center;
     padding-right: 24px;
-    min-width: 300px;
+    min-width: 100px;
 }
 
 .wallet-coin h1 {
     font-size: 16px;
-    width: 150px;
+    width: 100px;
 }
 
 .wallet-coin img {
     height: 30px;
     width: 30px;
-    margin-right: 10px;
 }
 
 .wallet-coin-symbol {
     text-transform: uppercase;
 }
 
-.wallet-coin-rank {
-    width: 100px;
-    text-align: right;
-}
+
 
 .wallet-coin-metrics {
     display: flex;
@@ -59,6 +52,5 @@
     justify-content: space-between;
     width: 100%;
 }
-
 
 
