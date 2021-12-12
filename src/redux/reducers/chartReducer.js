@@ -19,10 +19,20 @@ export default function chartReducer(state = {
         case UPDATE_WALLET_CHART:
             
             const updatedAmounts = renderSnapshotData(action.payload.snapshot, action.payload.coins)
+            const datasets = [...state.chartData.datasets]
+            datasets.forEach(dataset =>{
+                 const coin = dataset.label.toLowerCase()
+                 dataset.data.push(updatedAmounts[coin].toFixed(2))
+            })
+
             console.log(updatedAmounts)
+            console.log({...state, chartData: {
+                labels: [...state.chartData.labels, updatedAmounts.label],
+                datasets: datasets,
+            }})
             return {...state, chartData: {
                                 labels: [...state.chartData.labels, updatedAmounts.label],
-                                datasets: [...state.chartData.datasets]
+                                datasets: datasets,
             }}
         default:
             return state;

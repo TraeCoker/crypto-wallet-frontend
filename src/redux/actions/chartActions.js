@@ -173,7 +173,7 @@ export function renderChartData(data) {
   }
 }
 
-export function renderWalletChartData(data, snapshots) {
+export function renderWalletChartData(data, snapshots, update) {
     const snapshotsCopy = snapshots.map(s => s)
     const xAxis = [];
     const total = [];
@@ -183,6 +183,10 @@ export function renderWalletChartData(data, snapshots) {
     const tether = [];
     const solana = [];
     const today = new Date;
+
+    if(update){
+      data.push(update);
+    }
 
     data.forEach(day =>{
         let date = new Date(day.unix)

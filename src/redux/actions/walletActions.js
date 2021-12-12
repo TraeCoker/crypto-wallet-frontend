@@ -1,4 +1,5 @@
 import { SET_COINS, UPDATE_WALLET, UPDATE_WALLET_CHART } from "./constants"
+import { renderWalletChartData } from "./chartActions"
 
 export function fetchCurrentPrices(){
     //returns top 10 coins for wallet rendering
@@ -24,7 +25,7 @@ export function fetchCurrentPrices(){
           .then(resp => resp.json())
           .then(data => {
             dispatch({type: UPDATE_WALLET, payload: data})
-            
+
             dispatch({type: UPDATE_WALLET_CHART, payload: {snapshot: data.snapshot, coins: currentCoins}})
           })
       }
