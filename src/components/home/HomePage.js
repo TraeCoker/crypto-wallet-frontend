@@ -1,9 +1,11 @@
 import Logo from '../../images/logo.png'
+import Background from '../../images/bg.jpg'
+import './HomePage.css'
 
 
 export const HomePage = () => {
     return (
-        <div>
+        <div className="homepage">
             <img src={Logo} />
         </div>
     )

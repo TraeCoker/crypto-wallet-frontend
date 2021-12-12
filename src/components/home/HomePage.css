@@ -1,0 +1,13 @@
+.homepage {
+    background-image: url('../../images/bg.jpg');
+    height: 560px;
+    width: 100%;
+    background-size: cover;
+}
+
+.homepage img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
