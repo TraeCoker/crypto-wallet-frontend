@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './App.css'
 import Login from './components/authorization/Login';
 import Signup from './components/authorization/Signup';
+import { HomePage } from './components/home/HomePage';
 import MarketContainer from './components/market/MarketContainer';
 import WalletContainer from './components/wallet/WalletContainer';
 
@@ -17,12 +18,12 @@ function App() {
       <Link to="/wallet">Wallet</Link>
       
       <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/market" element={<MarketContainer />} />
         <Route path="/wallet" element={<WalletContainer />} />
       </Routes>
-      <img src={Logo} />
     </div>
   );
 }
