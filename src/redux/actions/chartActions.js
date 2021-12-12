@@ -96,9 +96,9 @@ export function renderRawData(rawData){
 }
 
 
-export function renderWalletChart(rawData, snapshots){
+export function renderWalletChart(rawData, snapshots, coins){
     return dispatch => {
-        dispatch({type: SET_WALLET_CHART, payload: renderWalletChartData(renderRawData(rawData), snapshots)})
+        dispatch({type: SET_WALLET_CHART, payload: renderWalletChartData(renderRawData(rawData), snapshots, coins)})
     }
 }
 
@@ -173,7 +173,7 @@ export function renderChartData(data) {
   }
 }
 
-export function renderWalletChartData(data, snapshots, update) {
+export function renderWalletChartData(data, snapshots, coins, update) {
     const snapshotsCopy = snapshots.map(s => s)
     const xAxis = [];
     const total = [];
@@ -253,6 +253,15 @@ export function renderWalletChartData(data, snapshots, update) {
             total.push(sum.toFixed(2));
       })
     }
+
+    const currentWallet = renderSnapshotData(snapshotsCopy.at(-1), coins)
+    xAxis.push(currentWallet.label)
+    bitcoin.push(currentWallet.bitcoin.toFixed(2));
+    ethereum.push(currentWallet.ethereum.toFixed(2));
+    cardano.push(currentWallet.cardano.toFixed(2));
+    tether.push(currentWallet.tether.toFixed(2));
+    solana.push(currentWallet.solana.toFixed(2));
+    total.push(currentWallet.total.toFixed(2));
 
     return data = {
     labels: xAxis,

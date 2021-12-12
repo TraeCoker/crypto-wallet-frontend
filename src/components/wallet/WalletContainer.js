@@ -29,7 +29,7 @@ export default function WalletContainer() {
 
     useEffect(() => {
         if (rawData.bitcoin && rawData.ethereum && rawData.tether && rawData.solana && rawData.cardano){
-            dispatch(renderWalletChart(rawData, snapshots));
+            dispatch(renderWalletChart(rawData, snapshots, coins));
         }
     }, [rawData])
 
