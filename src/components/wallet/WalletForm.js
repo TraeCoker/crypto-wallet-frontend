@@ -1,7 +1,7 @@
 import { useState} from "react"
 import { useDispatch} from "react-redux";
 import { updateWallet } from "../../redux/actions/walletActions";
-import coinsReducer from "../../redux/reducers/coinsReducer";
+import { Button } from "react-bootstrap";
 
 export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
     const [amount, setAmount] = useState('');
@@ -48,14 +48,14 @@ export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
         <div className="wallet-form">
             <form onSubmit={handleSubmit}>
                 <label>
-                <button type="button" onClick={() => setTransactionType('Sell')}>Sell</button>
-                <button type="button" onClick={() => setTransactionType('Buy')}>Buy</button>
+                <Button variant="dark" type="Button" onClick={() => setTransactionType('Sell')}>Sell</Button>
+                <Button variant="dark" type="Button" onClick={() => setTransactionType('Buy')}>Buy</Button>
                     <h1>{transactionType} {clickedCoin.name}</h1>
                     <label>$</label><input type="text" value={amount} onChange={ e => handleChange(e)}/>
                 </label>
                 <h1>{amount / clickedCoin.current_price} {clickedCoin.symbol}</h1>
                 <div>
-                    <button type="submit" >Submit Transaction</button>
+                    <Button variant="success"  type="submit" >Submit Transaction</Button>
                 </div>
             </form>
         </div>
