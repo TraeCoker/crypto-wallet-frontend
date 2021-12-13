@@ -3,14 +3,18 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import { LinkContainer } from 'react-router-bootstrap';
+import { NavBar } from '../navigation/NavBar';
 import './HomePage.css'
 
 
 export const HomePage = () => {
     return (
-        
+        <>
+        <NavBar />
         <div className="homepage">
+       
             <Container className="p-3">
+            
             <img src={Logo} />
             <ButtonToolbar className="custom-btn-toolbar">
             <LinkContainer to="/login">
@@ -22,6 +26,6 @@ export const HomePage = () => {
           </ButtonToolbar>
           </Container>
         </div>
-        
+        </>
     )
 }
