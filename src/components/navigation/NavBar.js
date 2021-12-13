@@ -10,7 +10,7 @@ export const NavBar = () => {
             <Nav.Link as={Link} to="/">Home</Nav.Link>
                 <Nav.Link as={Link} to="/market">Market</Nav.Link>
                 <Nav.Link as={Link} to="/wallet">Wallet</Nav.Link>
-                <Nav.Link as={Link} to="/logout">Logout</Nav.Link>
+                <Nav.Link as={Link} to="/">Logout</Nav.Link>
                 </Nav>
     </Container>
   </Navbar>

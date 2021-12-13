@@ -10,7 +10,6 @@ import './HomePage.css'
 export const HomePage = () => {
     return (
         <>
-        <NavBar />
         <div className="homepage">
        
             <Container className="p-3">
