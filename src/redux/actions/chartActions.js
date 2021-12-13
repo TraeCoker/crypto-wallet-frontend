@@ -225,44 +225,20 @@ export function renderWalletChartData(data, snapshots, coins, update) {
             solana.push(sol.toFixed(2));
             total.push(sum.toFixed(2));
             snapshotsCopy.shift()
-            console.log(snapshotsCopy)
         }
     })
-
-    if (snapshotsCopy.length > 1){
-      const day = data.at(-1)
-      snapshotsCopy.forEach(snap =>{
-        let date = new Date(snap.unix)
-        sameDay(date, today) ? (
-          xAxis.push("Today " + date.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit'}))
-        ) : (
-         xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}))
-        )
-            const btc = day.bitcoin * snap.bitcoin
-            const eth = day.ethereum * snap.ethereum
-            const ada = day.cardano * snap.cardano
-            const usdt = day.tether * snap.tether 
-            const sol = day.solana * snap.solana
-            const sum = btc + eth + ada + sol
-
-            bitcoin.push(btc.toFixed(2));
-            ethereum.push(eth.toFixed(2));
-            cardano.push(ada.toFixed(2));
-            tether.push(usdt.toFixed(2));
-            solana.push(sol.toFixed(2));
-            total.push(sum.toFixed(2));
-      })
-    }
-
+    
+    
+    const now = new Date()
     const currentWallet = renderSnapshotData(snapshotsCopy.at(-1), coins)
-    xAxis.push(currentWallet.label)
+    xAxis.push("Today " + now.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit'}))
     bitcoin.push(currentWallet.bitcoin.toFixed(2));
     ethereum.push(currentWallet.ethereum.toFixed(2));
     cardano.push(currentWallet.cardano.toFixed(2));
     tether.push(currentWallet.tether.toFixed(2));
     solana.push(currentWallet.solana.toFixed(2));
     total.push(currentWallet.total.toFixed(2));
-
+    
     return data = {
     labels: xAxis,
     datasets: [

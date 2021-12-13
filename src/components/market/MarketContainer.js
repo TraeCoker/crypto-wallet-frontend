@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCoins } from '../../redux/actions/marketActions';
 import { CoinRow } from './CoinRow';
+import { NavBar } from '../navigation/NavBar';
 import './MarketContainer.css'
 
 export default function MarketContainer() {
@@ -13,6 +14,8 @@ export default function MarketContainer() {
     }, [])
 
     return (
+        <>
+        <NavBar/>
         <div className="market-container">
             <h1>Market</h1>
                 {coins.map(c => { 
@@ -30,5 +33,6 @@ export default function MarketContainer() {
                     }
                 )}
         </div>
+        </>
     );
 }
