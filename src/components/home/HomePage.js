@@ -1,4 +1,4 @@
-import Logo from '../../images/logo.png'
+import Logo from '../../images/logo4.png'
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
