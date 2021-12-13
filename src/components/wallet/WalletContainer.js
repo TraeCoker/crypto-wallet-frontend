@@ -25,7 +25,6 @@ export default function WalletContainer() {
     
     useEffect(() => {
         if (snapshots) dispatch(retrieveWalletChartData(snapshots));
-        dispatch(fetchCurrentPrices());
     }, [])
 
     useEffect(() => {
@@ -63,8 +62,8 @@ export default function WalletContainer() {
                      if (key !== "id" && key !== "snapshots"){ 
                          return <WalletRow key={key} 
                                            name={key} 
-                                           value={value} 
                                            coin={coins.find(c => c.id === key)} 
+                                           value={value} 
                                            openModal={setShowModal}
                                            setClickedCoin={setClickedCoin} />  
                         }
