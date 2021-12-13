@@ -2,6 +2,15 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: rgb(43, 1, 63) !important;
+  background-color: rgb(18, 1, 27) !important;
   color:rgb(250, 250, 250) !important;
+}
+
+.bg {
+  opacity: 0.6;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
 }

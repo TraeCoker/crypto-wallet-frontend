@@ -1,4 +1,5 @@
 import { useState }from 'react';
+import { Form, Button, Container} from 'react-bootstrap';
 import './auth.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginUser} from '../../redux/actions/userActions';
@@ -30,20 +31,26 @@ export default function Login() {
 
   return(
     <div className="login-wrapper">
+    <div className="login-form">
     <h1>Please Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-            <p>Email</p>
-            <input type="text" value={email} onChange={e => setEmail(e.target.value)}/>
-        </label>
-        <label>
-            <p>Password</p>
-            <input type="password" value={password} onChange={e => setPassword(e.target.value)}/>
-        </label>
-        <div>
-            <button type="submit">Submit</button>
-        </div>
-      </form>
+    <Form onSubmit={handleSubmit}>
+  <Form.Group className="mb-3" controlId="formBasicEmail">
+    <Form.Label>Email address</Form.Label>
+    <Form.Control type="email" placeholder="Enter email" 
+                  value={email} onChange={e => setEmail(e.target.value)}/>
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Label>Password</Form.Label>
+    <Form.Control type="password" placeholder="Password" 
+                  value={password} onChange={e => setPassword(e.target.value)}
+    />
+  </Form.Group>
+  <Button variant="primary" type="submit">
+    Login
+  </Button>
+</Form>
+</div>
     </div>
   )
 }
