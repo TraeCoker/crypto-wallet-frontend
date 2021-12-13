@@ -36,6 +36,9 @@ export const options = {
   },
   scales: {
     y: {
+      grid: {
+        color: 'rgba(255, 255, 255, 0.3)'
+      },
         beginAtZero: true,
         ticks: {
             callback: function(value) {
@@ -45,6 +48,9 @@ export const options = {
         }
     },
     x: {
+      grid: {
+        color: 'rgba(255, 255, 255, 0.3)'
+      },
         ticks: {
             autoSkip: true,
             maxTicksLimit: 7
