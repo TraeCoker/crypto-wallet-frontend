@@ -1,12 +1,11 @@
 import { Route, Routes } from 'react-router';
 import { Link } from 'react-router-dom';
-import './App.css'
 import Login from './components/authorization/Login';
 import Signup from './components/authorization/Signup';
 import { HomePage } from './components/home/HomePage';
 import MarketContainer from './components/market/MarketContainer';
 import WalletContainer from './components/wallet/WalletContainer';
-
+import './App.css'
 
 function App() {
   return (

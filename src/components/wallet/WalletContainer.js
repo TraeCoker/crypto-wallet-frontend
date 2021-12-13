@@ -7,6 +7,7 @@ import { Chart } from '../chart/Chart.js';
 import { WalletRow } from './WalletRow';
 import { ModalComp } from '../modal/ModalComp';
 import { WalletForm } from './WalletForm';
+import { Container } from 'react-bootstrap';
 import './WalletContainer.css'
 
 export default function WalletContainer() {
@@ -39,7 +40,7 @@ export default function WalletContainer() {
       }
 
     return (
-        <div className="wallet-container">
+        <div className="wallet-container bg-dark">
             <div className="chart-container">
             <h1>Investment Earnings Over Time</h1>
                 <Chart />
