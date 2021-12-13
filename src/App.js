@@ -7,6 +7,7 @@ import MarketContainer from './components/market/MarketContainer';
 import WalletContainer from './components/wallet/WalletContainer';
 import './App.css'
 
+
 function App() {
   return (
     <div>
