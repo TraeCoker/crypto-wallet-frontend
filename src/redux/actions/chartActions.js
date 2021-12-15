@@ -69,7 +69,6 @@ export function renderRawData(rawData){
     const keys = Object.keys(rawData)
     const today = new Date()
 
-
     keys.forEach(coinKey =>
         filteredData[coinKey] = rawData[coinKey].filter(date => {
                    const dateObj = new Date(date[0]);
@@ -84,13 +83,16 @@ export function renderRawData(rawData){
     
     for (let i =0; i < span; i++){
         let pricesByDay = {}
-        keys.forEach(key => pricesByDay[key] = filteredData[key][i][1] )
+        console.log(keys)
+        console.log(filteredData)
+        keys.forEach(key => {
+          if (filteredData[key][i]) pricesByDay[key] = filteredData[key][i][1] 
+        })
         pricesByDay["unix"] = filteredData[keys[0]][i][0]
 
         renderedData.push(pricesByDay)
     }
-    console.log("here")
-    console.log(renderedData)
+   
     return renderedData
     
 }
@@ -229,7 +231,7 @@ export function renderWalletChartData(data, snapshots, coins, update) {
     })
     
     
-
+console.log(snapshotsCopy)
 if (snapshotsCopy.length > 1){
   const day = data.at(-1)
   snapshotsCopy.forEach(snap =>{
@@ -239,13 +241,15 @@ if (snapshotsCopy.length > 1){
     ) : (
      xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}))
     )
+    console.log(day)
+    console.log(snapshotsCopy)
         const btc = day.bitcoin * snap.bitcoin
         const eth = day.ethereum * snap.ethereum
         const ada = day.cardano * snap.cardano
         const usdt = day.tether * snap.tether 
         const sol = day.solana * snap.solana
         const sum = btc + eth + ada + sol
-        
+
         bitcoin.push(btc.toFixed(2));
         ethereum.push(eth.toFixed(2));
         cardano.push(ada.toFixed(2));
