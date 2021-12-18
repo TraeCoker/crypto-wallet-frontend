@@ -15,11 +15,12 @@ export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
         if (e.target.value === '' || re.test(e.target.value)){
             if (transactionType === 'Sell'){
                 const coin = clickedCoin.name.toLowerCase();
-                const currentTotal = wallet[coin] * clickedCoin.current_price;
+                //const currentTotal = wallet[coin] * clickedCoin.current_price;
+                const currentTotal = e.target.value / clickedCoin.current_price
                 console.log(coin)
                 console.log(currentTotal)
                 console.log(e.target.value)
-                if (e.target.value <= currentTotal){
+                if (wallet[coin] - currentTotal >= 0){
                     setAmount(e.target.value);
                 };
             } else {
@@ -48,8 +49,19 @@ export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
         <div className="wallet-form">
             <form onSubmit={handleSubmit}>
                 <label>
-                <Button variant="dark" type="Button" onClick={() => setTransactionType('Sell')}>Sell</Button>
-                <Button variant="dark" type="Button" onClick={() => setTransactionType('Buy')}>Buy</Button>
+
+                <Button variant="dark" type="Button" 
+                onClick={() => { 
+                    setTransactionType('Sell')
+                    setAmount('')
+                }}>Sell</Button>
+                
+                <Button variant="dark" type="Button" 
+                onClick={() => {
+                    setTransactionType('Buy')
+                    setAmount('')
+                }}>Buy</Button>
+
                     <h1>{transactionType} {clickedCoin.name}</h1>
                     <label>$</label><input type="text" value={amount} onChange={ e => handleChange(e)}/>
                 </label>
