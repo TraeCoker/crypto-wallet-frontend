@@ -5,7 +5,7 @@ import './CoinRow.css'
 
 export const CoinRow = ({name, price, symbol, rank, image, volume, marketcap, priceChange}) => {
     const dispatch = useDispatch();
-
+    console.log(name)
     return (
         <div className="coin-container">
           <div className="coin-row" onClick={() => dispatch(fetchChartData())}>
@@ -20,9 +20,9 @@ export const CoinRow = ({name, price, symbol, rank, image, volume, marketcap, pr
                 <p className="coin-volume">Vol: ${volume.toLocaleString()}</p>
 
                 {priceChange < 0 ? (
-                    <p className="coin-price-change red">{priceChange.toFixed(2)}%</p>
+                    <p className="coin-price-change red">{priceChange ? priceChange.toFixed(2) : 0 }%</p>
                 ) : (
-                    <p className="coin-price-change green">{priceChange.toFixed(2)}%</p>
+                    <p className="coin-price-change green">{priceChange ? priceChange.toFixed(2): 0 }%</p>
                 )}
             
                 <p className="coin-market-cap">Mkt Cap: ${marketcap.toLocaleString()}</p>
