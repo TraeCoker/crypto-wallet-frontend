@@ -197,6 +197,7 @@ export function renderWalletChartData(data, snapshots, coins, update) {
         ) : (
          xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}))
         )
+      
 
         if (snapshotsCopy.length <= 1 || day.unix < snapshotsCopy[1].unix){
             const btc = day.bitcoin * snapshotsCopy[0].bitcoin
@@ -212,6 +213,7 @@ export function renderWalletChartData(data, snapshots, coins, update) {
             tether.push(usdt.toFixed(2));
             solana.push(sol.toFixed(2));
             total.push(sum.toFixed(2));
+
         } else {
             const btc = day.bitcoin * snapshotsCopy[1].bitcoin
             const eth = day.ethereum * snapshotsCopy[1].ethereum
@@ -228,36 +230,30 @@ export function renderWalletChartData(data, snapshots, coins, update) {
             total.push(sum.toFixed(2));
             snapshotsCopy.shift()
         }
+        
+        while(snapshotsCopy[1] && sameDay(new Date(snapshotsCopy[0].unix), new Date(snapshotsCopy[1].unix))){
+          xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}) + ", " + new Date(snapshotsCopy[0].unix).toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit'}))
+          console.log(snapshotsCopy)
+          const btc = day.bitcoin * snapshotsCopy[0].bitcoin
+          const eth = day.ethereum * snapshotsCopy[0].ethereum
+          const ada = day.cardano * snapshotsCopy[0].cardano
+          const usdt = day.tether * snapshotsCopy[0].tether 
+          const sol = day.solana * snapshotsCopy[0].solana
+          const sum = btc + eth + ada + sol
+
+          bitcoin.push(btc.toFixed(2));
+          ethereum.push(eth.toFixed(2));
+          cardano.push(ada.toFixed(2));
+          tether.push(usdt.toFixed(2));
+          solana.push(sol.toFixed(2));
+          total.push(sum.toFixed(2));
+
+          snapshotsCopy.shift();
+        };
     })
     
-    
-console.log(snapshotsCopy)
-if (snapshotsCopy.length > 1){
-  const day = data.at(-1)
-  snapshotsCopy.forEach(snap =>{
-    let date = new Date(snap.unix)
-    sameDay(date, today) ? (
-      xAxis.push("Today " + date.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit'}))
-    ) : (
-     xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}))
-    )
-    console.log(day)
     console.log(snapshotsCopy)
-        const btc = day.bitcoin * snap.bitcoin
-        const eth = day.ethereum * snap.ethereum
-        const ada = day.cardano * snap.cardano
-        const usdt = day.tether * snap.tether 
-        const sol = day.solana * snap.solana
-        const sum = btc + eth + ada + sol
 
-        bitcoin.push(btc.toFixed(2));
-        ethereum.push(eth.toFixed(2));
-        cardano.push(ada.toFixed(2));
-        tether.push(usdt.toFixed(2));
-        solana.push(sol.toFixed(2));
-        total.push(sum.toFixed(2));
-  })
-}
     
     const now = new Date()
     const currentWallet = renderSnapshotData(snapshotsCopy.at(-1), coins)
