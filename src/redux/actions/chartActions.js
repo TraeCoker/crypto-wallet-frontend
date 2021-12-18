@@ -83,15 +83,12 @@ export function renderRawData(rawData){
     
     for (let i =0; i < span; i++){
         let pricesByDay = {}
-        console.log(keys)
-        console.log(filteredData)
-        keys.forEach(key => {
-          if (filteredData[key][i]) pricesByDay[key] = filteredData[key][i][1] 
-        })
-        pricesByDay["unix"] = filteredData[keys[0]][i][0]
-
-        renderedData.push(pricesByDay)
-    }
+       if (keys.every(key => filteredData[key][i])){
+          keys.forEach(key => pricesByDay[key] = filteredData[key][i][1])
+          pricesByDay["unix"] = filteredData[keys[0]][i][0]
+          renderedData.push(pricesByDay)
+       }; 
+    };
    
     return renderedData
     
@@ -233,7 +230,6 @@ export function renderWalletChartData(data, snapshots, coins, update) {
         
         while(snapshotsCopy[1] && sameDay(new Date(snapshotsCopy[0].unix), new Date(snapshotsCopy[1].unix))){
           xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}) + ", " + new Date(snapshotsCopy[0].unix).toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit'}))
-          console.log(snapshotsCopy)
           const btc = day.bitcoin * snapshotsCopy[0].bitcoin
           const eth = day.ethereum * snapshotsCopy[0].ethereum
           const ada = day.cardano * snapshotsCopy[0].cardano
