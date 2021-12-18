@@ -17,15 +17,15 @@ export function createUser(user){
         },
         body: JSON.stringify(user),
         })
-        .then(r => r.json())
+        .then(r => handleErrors(r))
         .then(data => {
         setToken(data.jwt);
         dispatch({type: SET_USER, payload: data.user});
         dispatch({type: SET_WALLET, payload: [data.user.wallet, data.user.snapshots]});
         dispatch({type: SET_WALLET_CHART, payload: renderChartData(data.user.snapshots)});
         }
-    );
-    }
+    ).catch(error => console.log(error))
+    };
 }
 
 export function loginUser(user){
@@ -38,15 +38,15 @@ export function loginUser(user){
         },
         body: JSON.stringify(user),
         })
-        .then(r => r.json())
+        .then(r => handleErrors(r))
         .then(data => {
         setToken(data.jwt);
         dispatch({type: SET_USER, payload: data.user});
         dispatch({type: SET_WALLET, payload: [data.user.wallet, data.user.snapshots]});
         dispatch({type: SET_WALLET_CHART, payload: renderChartData(data.user.snapshots)});
-    }
-    );
-    }
+        }
+        ).catch(error => console.log(error))
+    };
 }
 
 export function renderCurrentPrices(coins) {
@@ -63,4 +63,12 @@ export function renderCurrentPrices(coins) {
         cardano,
         solana,
     })
+}
+
+function handleErrors(response){
+    if (!response.ok){
+        throw new Error(response.statusText);
+    } else {
+        return response.json();
+    }
 }

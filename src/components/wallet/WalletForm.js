@@ -32,7 +32,7 @@ export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const coin = clickedCoin.name.toLowerCase();
-        const total = amount / clickedCoin.current_price;
+        let total = amount / clickedCoin.current_price;
         const transaction = {
             id: wallet.id,
             coin: coin,
@@ -55,7 +55,7 @@ export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
                     setTransactionType('Sell')
                     setAmount('')
                 }}>Sell</Button>
-                
+
                 <Button variant="dark" type="Button" 
                 onClick={() => {
                     setTransactionType('Buy')
