@@ -29,7 +29,7 @@ export function createUser(user){
         dispatch({type: SET_WALLET, payload: [data.user.wallet, data.user.snapshots]});
         dispatch({type: SET_WALLET_CHART, payload: renderChartData(data.user.snapshots)});
         }
-    ).catch(error => console.log(error))
+    ).catch(error => dispatch({type: AUTHORIZATION_FAILED, payload: "Invalid entry. Please submit valid name, email, and password."}))
     };
 }
 

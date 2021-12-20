@@ -12,6 +12,7 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(state => state.user.isLoggedIn)
+  const errors = useSelector(state => state.user.errors)
 
   if (isLoggedIn) {
     return <Navigate from="/signup" to="/wallet" />
@@ -35,6 +36,7 @@ export default function Signup() {
     <div className="login-wrapper">
       <div className="login-form">
         <h1>Welcome! Create a new user</h1>
+        <p className="error">{errors ? errors : null}</p>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicName">
           <Form.Label>Name</Form.Label>
