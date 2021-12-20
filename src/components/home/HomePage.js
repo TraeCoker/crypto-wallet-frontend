@@ -3,12 +3,14 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import { LinkContainer } from 'react-router-bootstrap';
-import { NavBar } from '../navigation/NavBar';
+import { useSelector } from 'react-redux';
 import './HomePage.css'
 import { ButtonGroup } from 'react-bootstrap';
 
 
 export const HomePage = () => {
+    const isLoggedIn = useSelector(state => state.user.isLoggedIn);
+
     return (
         <>
         <div className="homepage">
@@ -18,14 +20,25 @@ export const HomePage = () => {
             <img src={Logo} />
             <div className="button-bar">
             <ButtonToolbar className="custom-btn-toolbar">
-            <ButtonGroup size="lg" className="mb-2">
-            <LinkContainer to="/login">
+            { isLoggedIn ? (
+              <ButtonGroup size="lg" className="mb-2">
+              <LinkContainer to="/market">
+              <Button>Market</Button>
+              </LinkContainer>
+              <LinkContainer to="/wallet">
+              <Button>Wallet</Button>
+              </LinkContainer>
+              </ButtonGroup>
+            ) : (
+              <ButtonGroup size="lg" className="mb-2">
+              <LinkContainer to="/login">
               <Button>Login</Button>
-            </LinkContainer>
-            <LinkContainer to="/signup">
+              </LinkContainer>
+              <LinkContainer to="/signup">
               <Button>Signup</Button>
-            </LinkContainer>
-            </ButtonGroup>
+              </LinkContainer>
+             </ButtonGroup>
+            )}
           </ButtonToolbar>
           </div>
           </Container>
