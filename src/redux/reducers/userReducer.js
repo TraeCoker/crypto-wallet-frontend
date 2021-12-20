@@ -1,4 +1,4 @@
-import { CLEAR_USER, SET_USER, CLEAR_USER } from "../actions/constants";
+import { SET_USER, CLEAR_USER } from "../actions/constants";
 
 export default function userReducer(state = {
     isLoggedIn: false,
