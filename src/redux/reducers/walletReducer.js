@@ -1,4 +1,4 @@
-import { SET_WALLET, UPDATE_WALLET } from "../actions/constants";
+import { CLEAR_WALLET, SET_WALLET, UPDATE_WALLET } from "../actions/constants";
 
 export default function walletReducer(state = {
     current: {},
@@ -9,6 +9,8 @@ export default function walletReducer(state = {
         case UPDATE_WALLET:
             console.log({current: action.payload.wallet, snapshots: [...state.snapshots, action.payload.snapshot]})
             return {current: action.payload.wallet, snapshots: [...state.snapshots, action.payload.snapshot]}
+        case CLEAR_WALLET:
+            return {current: {}}
         default:
             return state;
     }
