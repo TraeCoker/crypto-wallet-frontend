@@ -1,5 +1,5 @@
 # CryptoXchange
-CryptoXchange is a full-stack (mock) cryptocurrency exchange and wallet built using React.js, Redux, Chart.js, CoinGecko Crypto Metrics API and Ruby on Rails.
+CryptoXchange is a full-stack (mock) cryptocurrency exchange and wallet built using React.js, Redux, Chart.js, CoinGecko API and Ruby on Rails.
 
 ## Installation
 Soon to be deployed to Heroku. For the remainder of development head over to https://github.com/TraeCoker/crypto-wallet-backend to clone the database to your local machine. 
