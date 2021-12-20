@@ -2,6 +2,7 @@ import { Button} from 'react-bootstrap';
 import { logoutUser } from '../../redux/actions/userActions';
 import { Navigate, useNavigate } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
+import { NavBar } from '../navigation/NavBar';
 import './auth.css';
 
 export default function Logout(){
@@ -19,10 +20,14 @@ export default function Logout(){
       }
 
     return (
-        <div>
+        <>
+        <NavBar />
+        <div className="login-form">
+        <h1>Are you sure you want to Logout?</h1>
             <Button onClick={() => handleClick()}>
                 Logout
             </Button>
         </div>
+        </>
     )
 }
