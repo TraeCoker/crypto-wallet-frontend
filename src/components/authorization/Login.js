@@ -3,7 +3,8 @@ import { Form, Button} from 'react-bootstrap';
 import './auth.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginUser} from '../../redux/actions/userActions';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
+
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -35,11 +36,11 @@ export default function Login() {
     <h1>Please Log In</h1>
     <p>{errors ? errors : null}</p>
     <Form onSubmit={handleSubmit}>
-  <Form.Group className="mb-3" controlId="formBasicEmail">
+    <Form.Group className="mb-3" controlId="formBasicEmail">
     <Form.Label>Email address</Form.Label>
     <Form.Control type="email" placeholder="Enter email" 
                   value={email} onChange={e => setEmail(e.target.value)}/>
-  </Form.Group>
+    </Form.Group>
 
   <Form.Group className="mb-3" controlId="formBasicPassword">
     <Form.Label>Password</Form.Label>
@@ -51,6 +52,9 @@ export default function Login() {
     Login
   </Button>
 </Form>
+<br />
+<p>New to CryptoXchange?</p> 
+<p><Link to="/signup">create an account</Link></p>
 </div>
     </div>
   )

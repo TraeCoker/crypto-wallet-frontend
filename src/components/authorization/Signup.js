@@ -3,7 +3,7 @@ import { Form, Button} from 'react-bootstrap';
 import './auth.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { createUser } from '../../redux/actions/userActions';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 
 
 export default function Signup() {
@@ -56,6 +56,9 @@ export default function Signup() {
           </Form.Group>
           <Button variant="primary" type="submit">Submit</Button>
           </Form>
+          <br/>
+          <p>Already a CryptoXchange member?</p> 
+          <p><Link to="/login">Sign in </Link></p>
         </div>
     </div>
   )
