@@ -45,9 +45,7 @@ Selecting the Market tab from the navigation bar will render a marketplace listi
 
 <img width="897" alt="4" src="https://user-images.githubusercontent.com/79291960/146824139-92a3cbe7-b83f-4a46-a49d-2030fa4a5881.PNG">
 
-Coming Soon:
 
--real-time historical market data charts for each coin
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
