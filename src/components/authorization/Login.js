@@ -1,4 +1,5 @@
 import { useState }from 'react';
+import Logo from '../../images/nav.png'
 import { Form, Button} from 'react-bootstrap';
 import './auth.css';
 import { useSelector, useDispatch } from 'react-redux';
@@ -33,6 +34,7 @@ export default function Login() {
   return(
     <div className="login-wrapper">
     <div className="login-form">
+    <Link to="/"><img src={Logo} className="logo-link"/></Link>
     <h1>Please Log In</h1>
     <p>{errors ? errors : null}</p>
     <Form onSubmit={handleSubmit}>
@@ -53,8 +55,7 @@ export default function Login() {
   </Button>
 </Form>
 <br />
-<p>New to CryptoXchange?</p> 
-<p><Link to="/signup">create an account</Link></p>
+<p>New to CryptoXchange? <Link to="/signup">create an account</Link></p>
 </div>
     </div>
   )

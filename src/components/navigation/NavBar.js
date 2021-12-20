@@ -8,7 +8,7 @@ export const NavBar = () => {
       <Container>
         <Navbar.Brand as={Link} to="/"> 
         <img
-          alt=""
+          alt="Logo"
           src={Logo}
           width="30"
           height="30"
