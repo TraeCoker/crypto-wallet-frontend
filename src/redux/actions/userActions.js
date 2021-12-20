@@ -1,10 +1,15 @@
-import { SET_USER, SET_WALLET_CHART, SET_WALLET } from "./constants";
+import { SET_USER, SET_WALLET_CHART, SET_WALLET, CLEAR_USER, CLEAR_WALLET } from "./constants";
 import { renderChartData } from "./chartActions";
 
 
 const setToken = token => {
     localStorage.setItem("jwt", token);
     localStorage.setItem("lastLoginTime", new Date(Date.now()).getTime());
+}
+
+const removeToken = () => {
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("lastLoginTime");
 }
 
 export function createUser(user){
@@ -63,6 +68,14 @@ export function renderCurrentPrices(coins) {
         cardano,
         solana,
     })
+}
+
+export function logoutUser(){
+    return dispatch => {
+        dispatch({type: CLEAR_WALLET});
+        dispatch({type: CLEAR_USER});
+        removeToken();
+    }
 }
 
 function handleErrors(response){
