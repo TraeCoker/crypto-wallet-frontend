@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router';
-import { Link } from 'react-router-dom';
 import Login from './components/authorization/Login';
+import Logout from './components/authorization/Logout';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchCurrentPrices } from './redux/actions/walletActions';
@@ -27,6 +27,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/market" element={<MarketContainer />} />
         <Route path="/wallet" element={<WalletContainer />} />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
     </div>
   );
