@@ -10,7 +10,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(state => state.user.isLoggedIn)
- 
+  const errors = useSelector(state => state.user.errors)
 
   if (isLoggedIn) {
     return <Navigate from="/signup" to="/wallet" />
@@ -26,13 +26,14 @@ export default function Login() {
       };
   
 
-    dispatch(loginUser(user));
+    dispatch(loginUser(user))
   }
 
   return(
     <div className="login-wrapper">
     <div className="login-form">
     <h1>Please Log In</h1>
+    <p>{errors ? errors : null}</p>
     <Form onSubmit={handleSubmit}>
   <Form.Group className="mb-3" controlId="formBasicEmail">
     <Form.Label>Email address</Form.Label>

@@ -1,4 +1,4 @@
-import { SET_USER, SET_WALLET_CHART, SET_WALLET, CLEAR_USER, CLEAR_WALLET } from "./constants";
+import { SET_USER, SET_WALLET_CHART, SET_WALLET, CLEAR_USER, CLEAR_WALLET, AUTHORIZATION_FAILED } from "./constants";
 import { renderChartData } from "./chartActions";
 
 
@@ -50,7 +50,7 @@ export function loginUser(user){
         dispatch({type: SET_WALLET, payload: [data.user.wallet, data.user.snapshots]});
         dispatch({type: SET_WALLET_CHART, payload: renderChartData(data.user.snapshots)});
         }
-        ).catch(error => console.log(error))
+        ).catch(error => dispatch({type: AUTHORIZATION_FAILED, payload: "Invalid username or password"}))
     };
 }
 
