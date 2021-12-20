@@ -41,10 +41,12 @@ To the right of the chart the value of each of your coin holdings is shown in US
 
 <img width="887" alt="5" src="https://user-images.githubusercontent.com/79291960/146823937-6d3c66cf-9c62-4ee7-bf98-6c5fcb913c55.PNG">
 
-Selecting the Market tab from the navigation bar will render a marketplace listing of the top 100 cryptocurrencies and their current market price, market cap, volume, etc. 
+Selecting the Market tab from the navigation bar will render a marketplace listing of the top 100 cryptocurrencies and their real-time current market price, market cap, volume, etc. 
 
-This market data is updated in real-time.
 <img width="897" alt="4" src="https://user-images.githubusercontent.com/79291960/146824139-92a3cbe7-b83f-4a46-a49d-2030fa4a5881.PNG">
+
+Coming Soon:
+-real-time historical market data charts for each coin
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
