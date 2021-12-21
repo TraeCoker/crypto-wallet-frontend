@@ -1,4 +1,3 @@
-import coinsReducer from "../reducers/coinsReducer";
 import { SET_CHART, SET_WALLET_CHART, SET_RAW_DATA } from "./constants";
 
 export function fetchChartData(){
@@ -181,7 +180,7 @@ export function renderWalletChartData(data, snapshots, coins, update) {
     const cardano = [];
     const tether = [];
     const solana = [];
-    const today = new Date;
+    const today = new Date();
 
     if(update){
       data.push(update);
@@ -248,9 +247,8 @@ export function renderWalletChartData(data, snapshots, coins, update) {
         };
     })
     
-    console.log(snapshotsCopy)
 
-    
+
     const now = new Date()
     const currentWallet = renderSnapshotData(snapshotsCopy.at(-1), coins)
     xAxis.push("Today " + now.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit'}))
@@ -305,10 +303,9 @@ export function renderWalletChartData(data, snapshots, coins, update) {
 }
 
 export function renderSnapshotData(snapshot, currentCoins){
-          const updatedAmounts= {}
-          const keys = Object.keys(snapshot)
-          const today = new Date()
-          let total = 0
+          const updatedAmounts= {};
+          const keys = Object.keys(snapshot);
+          let total = 0;
         
         keys.forEach(coinKey =>{
           if(coinKey !== "id"){

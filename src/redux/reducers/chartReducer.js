@@ -25,11 +25,6 @@ export default function chartReducer(state = {
                  dataset.data.push(updatedAmounts[coin].toFixed(2))
             })
 
-            console.log(updatedAmounts)
-            console.log({...state, chartData: {
-                labels: [...state.chartData.labels, updatedAmounts.label],
-                datasets: datasets,
-            }})
             return {...state, chartData: {
                                 labels: [...state.chartData.labels, updatedAmounts.label],
                                 datasets: datasets,

@@ -36,7 +36,7 @@ export default function Signup() {
   return(
     <div className="login-wrapper">
       <div className="login-form">
-      <Link to="/"><img src={Logo} className="logo-link"/></Link>
+      <Link to="/"><img src={Logo} className="logo-link" alt="logo"/></Link>
         <h1>Welcome! Create a new user</h1>
         <p className="error">{errors ? errors : null}</p>
         <Form onSubmit={handleSubmit}>

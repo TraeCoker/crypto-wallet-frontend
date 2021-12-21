@@ -2,13 +2,12 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Navigate } from 'react-router';
 import { retrieveWalletChartData, renderWalletChart } from '../../redux/actions/chartActions';
-import { fetchCurrentPrices } from '../../redux/actions/walletActions';
 import { Chart } from '../chart/Chart.js';
 import { WalletRow } from './WalletRow';
 import { ModalComp } from '../modal/ModalComp';
 import { WalletForm } from './WalletForm';
 import { NavBar } from '../navigation/NavBar';
-import './WalletContainer.css'
+import './WalletContainer.css';
 
 export default function WalletContainer() {
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);

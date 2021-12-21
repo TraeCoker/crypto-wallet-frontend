@@ -34,7 +34,7 @@ export default function Login() {
   return(
     <div className="login-wrapper">
     <div className="login-form">
-    <Link to="/"><img src={Logo} className="logo-link"/></Link>
+    <Link to="/"><img src={Logo} className="logo-link" alt="logo"/></Link>
     <h1>Please Log In</h1>
     <p>{errors ? errors : null}</p>
     <Form onSubmit={handleSubmit}>

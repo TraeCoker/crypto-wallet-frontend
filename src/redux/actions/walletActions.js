@@ -1,5 +1,4 @@
 import { SET_COINS, UPDATE_WALLET, UPDATE_WALLET_CHART } from "./constants"
-import { renderWalletChartData } from "./chartActions"
 
 export function fetchCurrentPrices(){
     //returns top 10 coins for wallet rendering

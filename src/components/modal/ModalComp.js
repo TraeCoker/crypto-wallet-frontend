@@ -3,7 +3,6 @@ import { Modal } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 
 export const ModalComp = ({ handleClose, show, children }) => {
-  const showHideClassName = show ? "modal display-block" : "modal display-none";
 
   return (
     <Modal show={show} onHide={handleClose} style={{color : "black", textAlign : "center"}}>

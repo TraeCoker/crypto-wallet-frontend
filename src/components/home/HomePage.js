@@ -17,7 +17,7 @@ export const HomePage = () => {
        
             <Container className="p-3">
             
-            <img src={Logo} />
+            <img src={Logo} alt="logo"/>
             <div className="button-bar">
             <ButtonToolbar className="custom-btn-toolbar">
             { isLoggedIn ? (
