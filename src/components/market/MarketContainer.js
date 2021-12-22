@@ -12,14 +12,10 @@ export default function MarketContainer() {
     const [sorted, setSorted] = useState(false)
 
     useEffect(() => {
-        console.log("a")
         dispatch(fetchCoins());
-        console.log("b")
     }, [])
-    //sort button sorts alphabetically
-    //same button returns original order
-  
 
+  
     const sortCoins = (x, y) => {
         if(x.name < y.name){return -1}
         if(x.name > y.name){return 1}
