@@ -11,8 +11,8 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(state => state.user.isLoggedIn)
-  const errors = useSelector(state => state.user.errors)
+  const isLoggedIn = useSelector(state => state.user.isLoggedIn);
+  const errors = useSelector(state => state.user.errors);
 
   if (isLoggedIn) {
     return <Navigate from="/signup" to="/wallet" />
@@ -58,5 +58,5 @@ export default function Login() {
 <p>New to CryptoXchange? <Link to="/signup">create an account</Link></p>
 </div>
     </div>
-  )
-}
+  );
+};
