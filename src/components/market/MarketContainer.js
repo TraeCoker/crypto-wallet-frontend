@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCoins } from '../../redux/actions/marketActions';
+import { Row, Col, Button, Form } from 'react-bootstrap';
 import { CoinRow } from './CoinRow';
 import { NavBar } from '../navigation/NavBar';
 import { useState } from 'react';
@@ -10,6 +11,7 @@ export default function MarketContainer() {
     const coins = useSelector(state => state.coins);
     const dispatch = useDispatch();
     const [sorted, setSorted] = useState(false)
+    const [searchInput, setSearchInput] = useState('')
 
     useEffect(() => {
         dispatch(fetchCoins());
@@ -34,8 +36,9 @@ export default function MarketContainer() {
         <>
         <NavBar/>
         <div className="market-container">
-        <button onClick={() => console.log(handleSort())}>Sort</button>
             <h1>Market</h1>
+            <Button onClick={() => handleSort()}>Sort</Button>
+            <input size="lg" type="text" placeholder="Search" />
                 {coinSelect().map(c => { 
                     return <CoinRow 
                             key={c.id} 
