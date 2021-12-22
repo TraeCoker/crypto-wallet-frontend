@@ -37,8 +37,8 @@ export default function MarketContainer() {
         <NavBar/>
         <div className="market-container">
             <h1>Market</h1>
-            <Button onClick={() => handleSort()}>Sort</Button>
-            <input size="lg" type="text" placeholder="Search" />
+            <Button onClick={() => handleSort()}>{sorted ? "Rank Sort" : "A-Z Sort"}</Button>
+            <input size="lg" type="text" placeholder="Search" value={searchInput} onChange={(e) => setSearchInput(e.target.value)}/>
                 {coinSelect().map(c => { 
                     return <CoinRow 
                             key={c.id} 
