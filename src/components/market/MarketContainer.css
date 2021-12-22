@@ -5,3 +5,32 @@
     align-items: center;
     margin-top: 10px;
 }
+
+.search {
+    padding-left: 16px;
+    width: 300px;
+    height: 50px;
+    border-radius: 4px;
+    border: none;
+    background-image: linear-gradient(
+        -225deg,
+        #324de4 0%,
+        #1c18f2 48%,
+        #2701ff 100%
+    );
+    color: #e2e2e2;
+}
+
+.search::placeholder {
+    color: #e2e2e2;
+}
+
+.sort-button {
+    background-image: linear-gradient(
+        -225deg,
+        #e48832 0%,
+        #f26f18 48%,
+        #ff4901 100%
+    );
+  color: #e2e2e2;
+}
