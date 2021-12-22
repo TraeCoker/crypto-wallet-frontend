@@ -1,7 +1,7 @@
 import { useState} from "react"
 import { useDispatch} from "react-redux";
 import { updateWallet } from "../../redux/actions/walletActions";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
 export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
     const [amount, setAmount] = useState('');
@@ -15,7 +15,6 @@ export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
         if (e.target.value === '' || re.test(e.target.value)){
             if (transactionType === 'Sell'){
                 const coin = clickedCoin.name.toLowerCase();
-                //const currentTotal = wallet[coin] * clickedCoin.current_price;
                 const currentTotal = e.target.value / clickedCoin.current_price
                 console.log(coin)
                 console.log(currentTotal)
@@ -64,6 +63,12 @@ export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
 
                     <h1>{transactionType} {clickedCoin.name}</h1>
                     <label>$</label><input type="text" value={amount} onChange={ e => handleChange(e)}/>
+                    {transactionType === "Sell"?  
+                        <Form.Check 
+                        type="switch"
+                        id="custom-switch"
+                        label="Select to sell all current holdings"
+                        /> : null}
                 </label>
                 <h1>{amount / clickedCoin.current_price} {clickedCoin.symbol}</h1>
                 <div>
