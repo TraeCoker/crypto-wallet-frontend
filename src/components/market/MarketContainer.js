@@ -30,7 +30,9 @@ export default function MarketContainer() {
     
     const handleSort = () => setSorted(!sorted)
 
-    const coinSelect = () => sorted ? sortedCoins() : coins 
+    const sortSelect = () => sorted ? sortedCoins() : coins 
+
+    const coinSelect = () => sortSelect().filter(c => c.name.toLowerCase().includes(searchInput.toLowerCase()))
 
     return (
         <>
