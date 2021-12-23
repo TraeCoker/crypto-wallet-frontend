@@ -32,7 +32,8 @@ export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const coin = clickedCoin.name.toLowerCase();
-        let total = amount / clickedCoin.current_price;
+        let total = 0
+        checked ? total = parseFloat(wallet[clickedCoin.name.toLowerCase()]) : total = amount / clickedCoin.current_price;
         const transaction = {
             id: wallet.id,
             coin: coin,
@@ -77,7 +78,7 @@ export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
                         label="Select to sell all current holdings"
                         /> : null}
                 </label>
-                <h1>{amount / clickedCoin.current_price} {clickedCoin.symbol}</h1>
+                <h1>{checked ?  wallet[clickedCoin.name.toLowerCase()] : amount / clickedCoin.current_price} {clickedCoin.symbol}</h1>
                 <div>
                     <Button variant="success"  type="submit" >Submit Transaction</Button>
                 </div>
