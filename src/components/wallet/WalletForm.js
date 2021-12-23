@@ -45,6 +45,8 @@ export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
         handleClose(false);
     }
 
+    const determineValue = () => checked ? (wallet[clickedCoin.name.toLowerCase()] * clickedCoin.current_price).toFixed(2) : amount
+
     return (
         <div className="wallet-form">
             <form onSubmit={handleSubmit}>
@@ -63,7 +65,7 @@ export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
                 }}>Buy</Button>
 
                     <h1>{transactionType} {clickedCoin.name}</h1>
-                    <label>$</label><input type="text" value={amount} onChange={ e => handleChange(e)}/>
+                    <label>$</label><input type="text" value={determineValue()} onChange={ e => handleChange(e)}/>
                     {transactionType === "Sell"?  
                         <Form.Check 
                         type="switch"
