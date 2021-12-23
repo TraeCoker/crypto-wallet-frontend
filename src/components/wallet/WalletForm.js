@@ -56,12 +56,14 @@ export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
                 onClick={() => { 
                     setTransactionType('Sell')
                     setAmount('')
+                    setChecked(false)
                 }}>Sell</Button>
 
                 <Button variant="dark" type="Button" 
                 onClick={() => {
                     setTransactionType('Buy')
                     setAmount('')
+                    setChecked(false)
                 }}>Buy</Button>
 
                     <h1>{transactionType} {clickedCoin.name}</h1>
