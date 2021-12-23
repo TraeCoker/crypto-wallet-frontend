@@ -6,6 +6,7 @@ import { Button, Form } from "react-bootstrap";
 export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
     const [amount, setAmount] = useState('');
     const [transactionType, setTransactionType] = useState('Buy')
+    const [checked, setChecked] = useState(false)
     const dispatch = useDispatch();
 
 
@@ -67,6 +68,8 @@ export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
                         <Form.Check 
                         type="switch"
                         id="custom-switch"
+                        checked={checked}
+                        onChange={(e) => setChecked(e.target.checked)}
                         label="Select to sell all current holdings"
                         /> : null}
                 </label>
