@@ -201,7 +201,7 @@ export function renderWalletChartData(data, snapshots, coins, update) {
             const ada = day.cardano * snapshotsCopy[0].cardano
             const usdt = day.tether * snapshotsCopy[0].tether 
             const sol = day.solana * snapshotsCopy[0].solana
-            const sum = btc + eth + ada + sol
+            const sum = btc + eth + ada + usdt + sol
 
             bitcoin.push(btc.toFixed(2));
             ethereum.push(eth.toFixed(2));
@@ -216,7 +216,7 @@ export function renderWalletChartData(data, snapshots, coins, update) {
             const ada = day.cardano * snapshotsCopy[1].cardano
             const usdt = day.tether * snapshotsCopy[1].tether 
             const sol = day.solana * snapshotsCopy[1].solana
-            const sum = btc + eth + ada + sol
+            const sum = btc + eth + ada + usdt + sol
 
             bitcoin.push(btc.toFixed(2));
             ethereum.push(eth.toFixed(2));
@@ -234,7 +234,7 @@ export function renderWalletChartData(data, snapshots, coins, update) {
           const ada = day.cardano * snapshotsCopy[0].cardano
           const usdt = day.tether * snapshotsCopy[0].tether 
           const sol = day.solana * snapshotsCopy[0].solana
-          const sum = btc + eth + ada + sol
+          const sum = btc + eth + ada + usdt + sol
 
           bitcoin.push(btc.toFixed(2));
           ethereum.push(eth.toFixed(2));
