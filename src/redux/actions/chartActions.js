@@ -1,4 +1,4 @@
-import { SET_CHART, SET_WALLET_CHART, SET_RAW_DATA } from "./constants";
+import { SET_CHART, SET_WALLET_CHART, SET_RAW_DATA, COIN_FETCH_ERROR } from "./constants";
 
 export function fetchChartData(){
     return dispatch => {
@@ -12,10 +12,16 @@ export function fetchChartData(){
 export function fetchWalletData(coin, start, end){
     return dispatch => {
         fetch(`https://api.coingecko.com/api/v3/coins/${coin}/market_chart/range?vs_currency=usd&from=${start}&to=${end}`)
-        .then(resp => resp.json())
-        .then(data => dispatch({type: SET_RAW_DATA, payload: [coin, data.prices]}));
-    };
-};
+        .then(resp => {
+          if (resp.ok) { resp.json()
+            .then(data => dispatch({type: SET_RAW_DATA, payload: [coin, data.prices]}))
+          } else { resp.json().then(data => console.error(data.error))
+          }
+        }).catch(err=> dispatch({type: COIN_FETCH_ERROR}))     
+    }
+}
+
+
 
 export function retrieveWalletChartData(snapshots){
     return dispatch => {
