@@ -12,12 +12,14 @@ export const HomePage = () => {
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);
     const error = useSelector(state => state.coins.fetch_error)
 
+    if (error) {
+      alert("Error acquiring market data at this time. Please refresh and try again")
+    }
+
     return (
         <>
         <div className="homepage">
-       
             <Container className="p-3">
-            {error ? <p className="home-error">Error acquiring market data at this time. Please refresh and try again.</p> : null}
             <img src={Logo} alt="logo"/>
             <div className="button-bar">
             <ButtonToolbar className="custom-btn-toolbar">
