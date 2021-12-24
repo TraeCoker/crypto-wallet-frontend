@@ -5,10 +5,12 @@ import { Row, Col, Button, Form } from 'react-bootstrap';
 import { CoinRow } from './CoinRow';
 import { NavBar } from '../navigation/NavBar';
 import { useState } from 'react';
+import { Navigate } from 'react-router';
 import './MarketContainer.css';
 
 export default function MarketContainer() {
     const coins = useSelector(state => state.coins);
+    const error = useSelector(state => state.coins.fetch_error)
     const dispatch = useDispatch();
     const [sorted, setSorted] = useState(false)
     const [searchInput, setSearchInput] = useState('')
@@ -17,6 +19,9 @@ export default function MarketContainer() {
         dispatch(fetchCoins());
     }, [])
 
+    if (error) {
+        return <Navigate from="/market" to="/" />
+    }
   
     const sortCoins = (x, y) => {
         if(x.name < y.name){return -1}

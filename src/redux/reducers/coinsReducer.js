@@ -5,7 +5,7 @@ export default function coinsReducer(state = [], action){
         case SET_COINS:
             return action.payload;
         case COIN_FETCH_ERROR:
-            
+            return {fetch_error: true}
         default:
             return state;
     }

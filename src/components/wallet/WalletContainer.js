@@ -15,6 +15,7 @@ export default function WalletContainer() {
     const snapshots = useSelector(state => state.wallet.snapshots);
     const rawData = useSelector(state => state.chart.rawData);
     const coins = useSelector(state => state.coins);
+    const error = useSelector(state => state.coins.fetch_error)
     const userName = useSelector(state => state.user.currentUser.name)
     const [showModal, setShowModal] = useState(false);
     const [clickedCoin, setClickedCoin] = useState('');
@@ -36,6 +37,10 @@ export default function WalletContainer() {
     if (!isLoggedIn) {
         return <Navigate from="/wallet" to="/login" />
       }
+    
+    if (error) {
+        return <Navigate from="/wallet" to="/" />
+    }
 
     return (
         <>

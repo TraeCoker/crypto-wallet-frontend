@@ -10,6 +10,11 @@ import { ButtonGroup } from 'react-bootstrap';
 
 export const HomePage = () => {
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);
+    const error = useSelector(state => state.coins.fetch_error)
+
+    if (error) {
+      alert("Error acquiring market data. Please refresh and try again.")
+  }
 
     return (
         <>
