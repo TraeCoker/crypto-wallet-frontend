@@ -5,8 +5,8 @@ export function fetchChartData(){
         fetch("https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=max&interval=daily")
         .then(resp => resp.json())
         .then(data => dispatch({type: SET_CHART, payload: data.prices}));
-    }
-}
+    };
+};
 
 
 export function fetchWalletData(coin, start, end){
@@ -17,37 +17,37 @@ export function fetchWalletData(coin, start, end){
             .then(data => dispatch({type: SET_RAW_DATA, payload: [coin, data.prices]}))
           } else { resp.json().then(data => console.error(data.error))
           }
-        }).catch(err=> dispatch({type: COIN_FETCH_ERROR}))     
-    }
-}
+        }).catch(err=> dispatch({type: COIN_FETCH_ERROR})) 
+    };
+};
 
 
 
 export function retrieveWalletChartData(snapshots){
     return dispatch => {
-        let today = new Date()
+        let today = new Date();
         let start = snapshots[0].unix / 1000;
         let end = today.getTime() / 1000;
         
-        dispatch(fetchWalletData("bitcoin", start, end))
-        dispatch(fetchWalletData("ethereum", start, end))
-        dispatch(fetchWalletData("tether", start, end))
-        dispatch(fetchWalletData("cardano", start, end))
-        dispatch(fetchWalletData("solana", start, end))
+        dispatch(fetchWalletData("bitcoin", start, end));
+        dispatch(fetchWalletData("ethereum", start, end));
+        dispatch(fetchWalletData("tether", start, end));
+        dispatch(fetchWalletData("cardano", start, end));
+        dispatch(fetchWalletData("solana", start, end));
 
-    }
-}
+    };
+};
 
 
 
 export function renderMarketData(data){
-    const xAxis = []
-    const yAxis = []
+    const xAxis = [];
+    const yAxis = [];
     data.forEach(array =>{
         let date = new Date(array[0])
         xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}))
         yAxis.push(array[1].toFixed(2))
-    })
+    });
 
 
     return data = {
@@ -60,19 +60,20 @@ export function renderMarketData(data){
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
     ],
-  }
-}
+  };
+};
+
 export function sameDay(d1, d2) {
   return d1.getFullYear() === d2.getFullYear() &&
     d1.getMonth() === d2.getMonth() &&
     d1.getDate() === d2.getDate();
-}
+};
 
 export function renderRawData(rawData){
    
-    let filteredData = {}
-    const keys = Object.keys(rawData)
-    const today = new Date()
+    let filteredData = {};
+    const keys = Object.keys(rawData);
+    const today = new Date();
 
     keys.forEach(coinKey =>
         filteredData[coinKey] = rawData[coinKey].filter(date => {
@@ -81,10 +82,10 @@ export function renderRawData(rawData){
                        return date
                    }
                })
-    )
+    );
 
-    let span = filteredData[keys[0]].length 
-    let renderedData = []
+    let span = filteredData[keys[0]].length ;
+    let renderedData = [];
     
     for (let i =0; i < span; i++){
         let pricesByDay = {}
@@ -97,14 +98,14 @@ export function renderRawData(rawData){
    
     return renderedData
     
-}
+};
 
 
 export function renderWalletChart(rawData, snapshots, coins){
     return dispatch => {
         dispatch({type: SET_WALLET_CHART, payload: renderWalletChartData(renderRawData(rawData), snapshots, coins)})
-    }
-}
+    };
+};
 
 export function renderChartData(data) {
     
@@ -174,8 +175,8 @@ export function renderChartData(data) {
         backgroundColor: 'rgba(237, 26, 26, 0.5)',
       },
     ],
-  }
-}
+  };
+};
 
 export function renderWalletChartData(data, snapshots, coins, update) {
     const snapshotsCopy = snapshots.map(s => s)
@@ -193,7 +194,7 @@ export function renderWalletChartData(data, snapshots, coins, update) {
     }
 
     data.forEach(day =>{
-        let date = new Date(day.unix)
+        let date = new Date(day.unix);
         sameDay(date, today) ? (
           xAxis.push("Today " + date.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit'}))
         ) : (
@@ -202,12 +203,12 @@ export function renderWalletChartData(data, snapshots, coins, update) {
       
 
         if (snapshotsCopy.length <= 1 || day.unix < snapshotsCopy[1].unix){
-            const btc = day.bitcoin * snapshotsCopy[0].bitcoin
-            const eth = day.ethereum * snapshotsCopy[0].ethereum
-            const ada = day.cardano * snapshotsCopy[0].cardano
-            const usdt = day.tether * snapshotsCopy[0].tether 
-            const sol = day.solana * snapshotsCopy[0].solana
-            const sum = btc + eth + ada + usdt + sol
+            const btc = day.bitcoin * snapshotsCopy[0].bitcoin;
+            const eth = day.ethereum * snapshotsCopy[0].ethereum;
+            const ada = day.cardano * snapshotsCopy[0].cardano;
+            const usdt = day.tether * snapshotsCopy[0].tether;
+            const sol = day.solana * snapshotsCopy[0].solana;
+            const sum = btc + eth + ada + usdt + sol;
 
             bitcoin.push(btc.toFixed(2));
             ethereum.push(eth.toFixed(2));
@@ -217,12 +218,12 @@ export function renderWalletChartData(data, snapshots, coins, update) {
             total.push(sum.toFixed(2));
 
         } else {
-            const btc = day.bitcoin * snapshotsCopy[1].bitcoin
-            const eth = day.ethereum * snapshotsCopy[1].ethereum
-            const ada = day.cardano * snapshotsCopy[1].cardano
-            const usdt = day.tether * snapshotsCopy[1].tether 
-            const sol = day.solana * snapshotsCopy[1].solana
-            const sum = btc + eth + ada + usdt + sol
+            const btc = day.bitcoin * snapshotsCopy[1].bitcoin;
+            const eth = day.ethereum * snapshotsCopy[1].ethereum;
+            const ada = day.cardano * snapshotsCopy[1].cardano;
+            const usdt = day.tether * snapshotsCopy[1].tether; 
+            const sol = day.solana * snapshotsCopy[1].solana;
+            const sum = btc + eth + ada + usdt + sol;
 
             bitcoin.push(btc.toFixed(2));
             ethereum.push(eth.toFixed(2));
@@ -230,17 +231,17 @@ export function renderWalletChartData(data, snapshots, coins, update) {
             tether.push(usdt.toFixed(2));
             solana.push(sol.toFixed(2));
             total.push(sum.toFixed(2));
-            snapshotsCopy.shift()
+            snapshotsCopy.shift();
         }
         
         while(snapshotsCopy[1] && sameDay(new Date(snapshotsCopy[0].unix), new Date(snapshotsCopy[1].unix))){
           xAxis.push(date.toLocaleDateString("en-US", {month: 'short', day: 'numeric'}) + ", " + new Date(snapshotsCopy[0].unix).toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit'}))
-          const btc = day.bitcoin * snapshotsCopy[0].bitcoin
-          const eth = day.ethereum * snapshotsCopy[0].ethereum
-          const ada = day.cardano * snapshotsCopy[0].cardano
-          const usdt = day.tether * snapshotsCopy[0].tether 
-          const sol = day.solana * snapshotsCopy[0].solana
-          const sum = btc + eth + ada + usdt + sol
+          const btc = day.bitcoin * snapshotsCopy[0].bitcoin;
+          const eth = day.ethereum * snapshotsCopy[0].ethereum;
+          const ada = day.cardano * snapshotsCopy[0].cardano;
+          const usdt = day.tether * snapshotsCopy[0].tether; 
+          const sol = day.solana * snapshotsCopy[0].solana;
+          const sum = btc + eth + ada + usdt + sol;
 
           bitcoin.push(btc.toFixed(2));
           ethereum.push(eth.toFixed(2));
@@ -256,8 +257,8 @@ export function renderWalletChartData(data, snapshots, coins, update) {
 
 
     const now = new Date()
-    const currentWallet = renderSnapshotData(snapshotsCopy.at(-1), coins)
-    xAxis.push("Today " + now.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit'}))
+    const currentWallet = renderSnapshotData(snapshotsCopy.at(-1), coins);
+    xAxis.push("Today " + now.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit'}));
     bitcoin.push(currentWallet.bitcoin.toFixed(2));
     ethereum.push(currentWallet.ethereum.toFixed(2));
     cardano.push(currentWallet.cardano.toFixed(2));
@@ -305,8 +306,8 @@ export function renderWalletChartData(data, snapshots, coins, update) {
         backgroundColor: 'rgba(237, 26, 26, 0.5)',
       },
     ],
-  }
-}
+  };
+};
 
 export function renderSnapshotData(snapshot, currentCoins){
           const updatedAmounts= {};
@@ -325,18 +326,18 @@ export function renderSnapshotData(snapshot, currentCoins){
                };
           };
         });
-        updatedAmounts["total"] = total
+        updatedAmounts["total"] = total;
         return updatedAmounts
-}
+};
 
 export function renderUpdate(snapshot, coins){
-      const update = {}
+      const update = {};
       const keys = Object.keys(snapshot);
 
       keys.forEach(coinKey =>{
         if(coinKey !== "id"){
           update[coinKey] = coins[coinKey].current_price
         }
-      })
+      });
       return update
-}
+};

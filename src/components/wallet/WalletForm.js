@@ -1,12 +1,12 @@
-import { useState} from "react"
+import { useState} from "react";
 import { useDispatch} from "react-redux";
 import { updateWallet } from "../../redux/actions/walletActions";
 import { Button, Form } from "react-bootstrap";
 
 export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
     const [amount, setAmount] = useState('');
-    const [transactionType, setTransactionType] = useState('Buy')
-    const [checked, setChecked] = useState(false)
+    const [transactionType, setTransactionType] = useState('Buy');
+    const [checked, setChecked] = useState(false);
     const dispatch = useDispatch();
 
 
@@ -25,9 +25,9 @@ export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
                 };
             } else {
                 setAmount(e.target.value);
-            }
-        }
-    }
+            };
+        };
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -44,9 +44,9 @@ export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
         dispatch(updateWallet(transaction, coins));
         setAmount('');
         handleClose(false);
-    }
+    };
 
-    const determineValue = () => checked ? (wallet[clickedCoin.name.toLowerCase()] * clickedCoin.current_price).toFixed(2) : amount
+    const determineValue = () => checked ? (wallet[clickedCoin.name.toLowerCase()] * clickedCoin.current_price).toFixed(2) : amount;
 
     return (
         <div className="wallet-form">
@@ -84,6 +84,5 @@ export const WalletForm = ({clickedCoin, wallet, handleClose, coins}) => {
                 </div>
             </form>
         </div>
-    )
-}
-
+    );
+};

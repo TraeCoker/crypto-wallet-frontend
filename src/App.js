@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchCurrentPrices());
-  }, [])
+  }, []);
 
  
   return (
@@ -32,6 +32,6 @@ function App() {
       </Routes>
     </div>
   );
-}
+};
 
 export default App;

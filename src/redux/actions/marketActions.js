@@ -8,6 +8,6 @@ export function fetchCoins(){
               .then(data =>dispatch({type: SET_COINS, payload: data}))
             } else { resp.json().then(data => console.error(data.error))
             }
-        }).catch(err=> dispatch({type: COIN_FETCH_ERROR}))     
-    }
-}
+        }).catch(err=> dispatch({type: COIN_FETCH_ERROR}));   
+    };
+};

@@ -10,10 +10,8 @@ export default function chartReducer(state = {
     switch(action.type){
         case SET_CHART:
             return {...state, marketDisplay: true, chartData: action.payload}
-
         case SET_WALLET_CHART:
             return {...state, marketDisplay: false, chartData: action.payload}
-
         case SET_RAW_DATA:
             return {...state, rawData: {...state.rawData, [action.payload[0]]: action.payload[1]}}
         case UPDATE_WALLET_CHART:
@@ -31,5 +29,5 @@ export default function chartReducer(state = {
             }}
         default:
             return state;
-    }
-}
+    };
+};

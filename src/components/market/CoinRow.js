@@ -1,4 +1,4 @@
-import './CoinRow.css'
+import './CoinRow.css';
 
 export const CoinRow = ({name, price, symbol, rank, image, volume, marketcap, priceChange}) => {
 
@@ -26,4 +26,4 @@ export const CoinRow = ({name, price, symbol, rank, image, volume, marketcap, pr
           </div>
         </div>
     );
-}
+};

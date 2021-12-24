@@ -13,7 +13,6 @@ export default function userReducer(state = {
         case AUTHORIZATION_FAILED:
             return {...state, errors: action.payload}
         default:
-            return state;
-        
-    }
-}
+            return state; 
+    };
+};

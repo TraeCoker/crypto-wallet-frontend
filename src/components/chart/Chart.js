@@ -58,10 +58,10 @@ export const options = {
     },
   },
 
-}
+};
 
 
 export function Chart() {
 const data = useSelector(state => state.chart.chartData)
   return <Line options={options} data={data} />;
-}
+};

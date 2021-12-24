@@ -1,6 +1,6 @@
 import { useState }from 'react';
 import { Form, Button} from 'react-bootstrap';
-import Logo from '../../images/nav.png'
+import Logo from '../../images/nav.png';
 import './auth.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { createUser } from '../../redux/actions/userActions';
@@ -12,12 +12,12 @@ export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(state => state.user.isLoggedIn)
-  const errors = useSelector(state => state.user.errors)
+  const isLoggedIn = useSelector(state => state.user.isLoggedIn);
+  const errors = useSelector(state => state.user.errors);
 
   if (isLoggedIn) {
     return <Navigate from="/signup" to="/wallet" />
-  }
+  };
 
   function handleSubmit(e){
     e.preventDefault();
@@ -27,11 +27,10 @@ export default function Signup() {
       email: email,
       password: password,
      }
-      };
-  
+    };
 
     dispatch(createUser(user));
-  }
+  };
 
   return(
     <div className="login-wrapper">
@@ -62,5 +61,5 @@ export default function Signup() {
           <p>Already a CryptoXchange member? <Link to="/login">Sign in </Link></p>
         </div>
     </div>
-  )
-}
+  );
+};

@@ -1,13 +1,14 @@
-import './WalletRow.css'
+import './WalletRow.css';
 import Button from 'react-bootstrap/Button';
 
 export const WalletRow = ({name, value, coin, openModal, setClickedCoin}) => {
-    const earnings = coin.current_price * value
-    const handleClick = () =>{
-        
+    const earnings = coin.current_price * value;
+
+    const handleClick = () =>{  
         setClickedCoin(coin)
         openModal(true)
-    }
+    };
+
     return (
         <div className="wallet-coin-container">
             <div className="wallet-coin-row">
@@ -23,5 +24,5 @@ export const WalletRow = ({name, value, coin, openModal, setClickedCoin}) => {
                     <Button type="button" onClick={() => handleClick()}>Buy or Sell</Button>
             </div>    
         </div>
-    )
-}
+    );
+};

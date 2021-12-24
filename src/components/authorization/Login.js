@@ -16,7 +16,7 @@ export default function Login() {
 
   if (isLoggedIn) {
     return <Navigate from="/signup" to="/wallet" />
-  }
+  };
 
   function handleSubmit(e){
     e.preventDefault();
@@ -25,38 +25,34 @@ export default function Login() {
       email: email,
       password: password,
      }
-      };
-  
+    };
 
-    dispatch(loginUser(user))
-  }
+    dispatch(loginUser(user));
+  };
 
   return(
     <div className="login-wrapper">
-    <div className="login-form">
-    <Link to="/"><img src={Logo} className="logo-link" alt="logo"/></Link>
-    <h1>Please Log In</h1>
-    <p>{errors ? errors : null}</p>
-    <Form onSubmit={handleSubmit}>
-    <Form.Group className="mb-3" controlId="formBasicEmail">
-    <Form.Label>Email address</Form.Label>
-    <Form.Control type="email" placeholder="Enter email" 
+      <div className="login-form">
+        <Link to="/"><img src={Logo} className="logo-link" alt="logo"/></Link>
+        <h1>Please Log In</h1>
+        <p>{errors ? errors : null}</p>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control type="email" placeholder="Enter email" 
                   value={email} onChange={e => setEmail(e.target.value)}/>
-    </Form.Group>
-
-  <Form.Group className="mb-3" controlId="formBasicPassword">
-    <Form.Label>Password</Form.Label>
-    <Form.Control type="password" placeholder="Password" 
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control type="password" placeholder="Password" 
                   value={password} onChange={e => setPassword(e.target.value)}
-    />
-  </Form.Group>
-  <Button variant="primary" type="submit">
-    Login
-  </Button>
-</Form>
-<br />
-<p>New to CryptoXchange? <Link to="/signup">create an account</Link></p>
-</div>
+          />
+          </Form.Group>
+          <Button variant="primary" type="submit">Login</Button>
+        </Form>
+        <br />
+        <p>New to CryptoXchange? <Link to="/signup">create an account</Link></p>
+      </div>
     </div>
   );
 };

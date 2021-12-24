@@ -12,5 +12,5 @@ export default function walletReducer(state = {
             return {current: {}}
         default:
             return state;
-    }
-}
+    };
+};

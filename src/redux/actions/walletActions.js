@@ -1,4 +1,4 @@
-import { SET_COINS, UPDATE_WALLET, UPDATE_WALLET_CHART, COIN_FETCH_ERROR } from "./constants"
+import { SET_COINS, UPDATE_WALLET, UPDATE_WALLET_CHART, COIN_FETCH_ERROR } from "./constants";
 
 export function fetchCurrentPrices(){
     //returns top 10 coins for wallet rendering
@@ -9,9 +9,9 @@ export function fetchCurrentPrices(){
           .then(data => dispatch({type: SET_COINS, payload: data}))
         } else { resp.json().then(data => console.error(data.error))
         }
-      }).catch(err=> dispatch({type: COIN_FETCH_ERROR}))     
-    }
-  }
+      }).catch(err=> dispatch({type: COIN_FETCH_ERROR}));     
+    };
+  };
 
   export function updateWallet(transaction, currentCoins){
       return dispatch => {
@@ -27,10 +27,10 @@ export function fetchCurrentPrices(){
           })
           .then(resp => resp.json())
           .then(data => {
-            dispatch({type: UPDATE_WALLET, payload: data})
+            dispatch({type: UPDATE_WALLET, payload: data});
 
-            dispatch({type: UPDATE_WALLET_CHART, payload: {snapshot: data.snapshot, coins: currentCoins}})
+            dispatch({type: UPDATE_WALLET_CHART, payload: {snapshot: data.snapshot, coins: currentCoins}});
           })
-      }
+      };
 
-  }
+  };

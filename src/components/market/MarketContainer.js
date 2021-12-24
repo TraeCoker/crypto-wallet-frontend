@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCoins } from '../../redux/actions/marketActions';
-import { Row, Col, Button, Form } from 'react-bootstrap';
+import { Button} from 'react-bootstrap';
 import { CoinRow } from './CoinRow';
 import { NavBar } from '../navigation/NavBar';
 import { useState } from 'react';
@@ -12,32 +12,32 @@ export default function MarketContainer() {
     const coins = useSelector(state => state.coins);
     const error = useSelector(state => state.coins.fetch_error)
     const dispatch = useDispatch();
-    const [sorted, setSorted] = useState(false)
-    const [searchInput, setSearchInput] = useState('')
+    const [sorted, setSorted] = useState(false);
+    const [searchInput, setSearchInput] = useState('');
 
     useEffect(() => {
         dispatch(fetchCoins());
-    }, [])
+    }, []);
 
     if (error) {
         return <Navigate from="/market" to="/" />
-    }
+    };
   
     const sortCoins = (x, y) => {
         if(x.name < y.name){return -1}
         if(x.name > y.name){return 1}
         return 0
-    }
+    };
 
     const sortedCoins = () => {
          return [...coins].sort(sortCoins)
-    }
+    };
     
-    const handleSort = () => setSorted(!sorted)
+    const handleSort = () => setSorted(!sorted);
 
-    const sortSelect = () => sorted ? sortedCoins() : coins 
+    const sortSelect = () => sorted ? sortedCoins() : coins ;
 
-    const coinSelect = () => sortSelect().filter(c => c.name.toLowerCase().includes(searchInput.toLowerCase()))
+    const coinSelect = () => sortSelect().filter(c => c.name.toLowerCase().includes(searchInput.toLowerCase()));
 
     return (
         <>
@@ -66,4 +66,4 @@ export default function MarketContainer() {
         </div>
         </>
     );
-}
+};

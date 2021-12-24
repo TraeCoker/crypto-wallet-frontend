@@ -5,12 +5,12 @@ import { renderChartData } from "./chartActions";
 const setToken = token => {
     localStorage.setItem("jwt", token);
     localStorage.setItem("lastLoginTime", new Date(Date.now()).getTime());
-}
+};
 
 const removeToken = () => {
     localStorage.removeItem("jwt");
     localStorage.removeItem("lastLoginTime");
-}
+};
 
 export function createUser(user){
     return dispatch => {
@@ -31,7 +31,7 @@ export function createUser(user){
         }
     ).catch(error => dispatch({type: AUTHORIZATION_FAILED, payload: "Invalid entry. Please submit valid name, email, and password."}))
     };
-}
+};
 
 export function loginUser(user){
     return dispatch => {
@@ -52,7 +52,7 @@ export function loginUser(user){
         }
         ).catch(error => dispatch({type: AUTHORIZATION_FAILED, payload: "Invalid username or password"}))
     };
-}
+};
 
 export function renderCurrentPrices(coins) {
     const bitcoin = coins.find(c => c.id === "bitcoin").current_price
@@ -67,21 +67,21 @@ export function renderCurrentPrices(coins) {
         tether,
         cardano,
         solana,
-    })
-}
+    });
+};
 
 export function logoutUser(){
     return dispatch => {
         dispatch({type: CLEAR_WALLET});
         dispatch({type: CLEAR_USER});
         removeToken();
-    }
-}
+    };
+};
 
 function handleErrors(response){
     if (!response.ok){
         throw new Error(response.statusText);
     } else {
         return response.json();
-    }
-}
+    };
+};

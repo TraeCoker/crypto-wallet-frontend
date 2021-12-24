@@ -15,8 +15,8 @@ export default function WalletContainer() {
     const snapshots = useSelector(state => state.wallet.snapshots);
     const rawData = useSelector(state => state.chart.rawData);
     const coins = useSelector(state => state.coins);
-    const error = useSelector(state => state.coins.fetch_error)
-    const userName = useSelector(state => state.user.currentUser.name)
+    const error = useSelector(state => state.coins.fetch_error);
+    const userName = useSelector(state => state.user.currentUser.name);
     const [showModal, setShowModal] = useState(false);
     const [clickedCoin, setClickedCoin] = useState('');
     const dispatch = useDispatch();
@@ -25,25 +25,25 @@ export default function WalletContainer() {
     
     useEffect(() => {
         if (snapshots) dispatch(retrieveWalletChartData(snapshots));
-    }, [])
+    }, []);
 
     useEffect(() => {
         if (rawData.bitcoin && rawData.ethereum && rawData.tether && rawData.solana && rawData.cardano){
             dispatch(renderWalletChart(rawData, snapshots, coins));
         }
-    }, [rawData])
+    }, [rawData]);
 
     
     if (!isLoggedIn) {
         return <Navigate from="/wallet" to="/login" />
-      }
+    };
     
     if (error) {
         return <Navigate from="/wallet" to="/" />
-    }
+    };
 
     return (
-        <>
+      <>
         <NavBar />
         <div className="wallet-container bg-dark">
             <div className="chart-container">
@@ -75,6 +75,6 @@ export default function WalletContainer() {
                 }
             </div>
         </div>
-        </>
-    )
-}
+      </>
+    );
+};
